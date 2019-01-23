@@ -17,7 +17,9 @@ $dark-accent:  mat-palette($mat-blue, A200, A100, A400);
 $dark-warn:    mat-palette($mat-red);
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
-@include angular-material-theme($dark-theme);
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+}
 
 html, body {
   height: 100%;
@@ -26,4 +28,43 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: white;
+}
+
+mat-toolbar {
+  @include mat-elevation(0);
+  background-color: mat-color($light-primary, lighter);
+  margin: auto;
+  padding: auto;
+  display: block;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+}
+
+mat-toolbar mat-toolbar-row {
+  display: block;
+  position: fixed;
+}
+
+footer {
+  background-color: mat-color($light-primary, lighter);
+  height: 10rem;
+  width: 100%;
+  bottom: 0;
+  position: relative;
+  text-align: center;
+  align-content: center;
+  margin: auto;
+  padding: auto;
+  place-items: center center;
+}
+
+footer span {
+  margin: 0;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
