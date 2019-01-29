@@ -21,6 +21,10 @@ $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
   @include angular-material-theme($dark-theme);
 }
 
+.elevate-low {
+  @include mat-elevation(1);
+}
+
 html, body {
   height: 100%;
 }

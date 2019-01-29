@@ -1,8 +1,18 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <a href="https://www.keanukerr.com" style="display: block"><img alt="Logo" src="assets/logo/Keanu/black.svg" style="display: block" class='icon'></a>
+    <a href="https://www.keanukerr.com" style="display: inline-block"><img alt="Logo" src="assets/logo/Keanu/black.svg" style="display: block" mat-card-avatar class='icon'></a>
     <span>{{globals.fullName}}</span>
     <span class='spacer'></span>
-    <img alt="Keanu Kerr" src="assets/image/keanu/profile.jpg" class='profile-pic icon'>
+    <span>
+      <a href="https://github.com/keanuk" title="GitHub" class="mat-button" mat-button=""><span class="mat-button-wrapper"><img alt="GitHub" src="assets/logo/GitHub/black.png" class="social-icon" color="accent"></span>GitHub<div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></a>
+      <a href="https://gitlab.com/keanuk" title="GitLab" class="mat-button" mat-button=""><span class="mat-button-wrapper"><img alt="GitLab" src="assets/logo/GitLab/black.svg" class="social-icon" color="accent"></span>GitLab<div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></a>
+      <a href="https://www.linkedin.com/in/keanukerr/" title="LinkedIn" class="mat-button" mat-button=""><span class="mat-button-wrapper"><img alt="LinkedIn" src="assets/logo/LinkedIn/black.png" class="social-icon" color="accent"></span>LinkedIn<div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></a>
+    </span>
+    <span style="display: none">
+      <a href="https://twitter.com/thehitchhikerr" title="Twitter" class="mat-button" mat-button=""><span class="mat-button-wrapper"><img alt="Twitter" src="assets/logo/Twitter/black.svg" class="icon" color="accent"></span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></a>
+      <a href="https://www.facebook.com/thehitchhikerr" title="Facebook" class="mat-button" mat-button=""><span class="mat-button-wrapper"><img alt="Facebook" src="assets/logo/Facebook/black.svg" class="icon" color="accent"></span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></a>
+      <a href="https://www.instagram.com/keanukerr/" title="Instagram" class="mat-button" mat-button=""><span class="mat-button-wrapper"><img alt="Instagram" src="assets/logo/Instagram/black.svg" class="icon" color="accent"></span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></a>
+    </span>
+    <img alt="Keanu Kerr" src="assets/image/keanu/profile.jpg" mat-card-avatar class='icon'>
   </mat-toolbar-row>
 </mat-toolbar>

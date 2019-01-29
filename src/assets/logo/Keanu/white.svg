@@ -44,7 +44,7 @@
      id="namedview13"
      showgrid="false"
      inkscape:zoom="0.43703704"
-     inkscape:cx="575.24918"
+     inkscape:cx="330.90245"
      inkscape:cy="515.52264"
      inkscape:window-x="0"
      inkscape:window-y="184"
@@ -89,14 +89,13 @@
   </defs>
   <title
      id="title6">KeanuLogo</title>
-  <ellipse
-     style="fill:#333333;fill-opacity:1;stroke-width:0.99788815;filter:url(#filter1227)"
-     id="path819"
-     cx="542.28815"
-     cy="542.28815"
-     rx="540"
-     ry="540.00006"
-     transform="matrix(0.97528249,0,0,0.97528249,13.404012,13.404014)" />
+  <rect
+     style="fill:#000000;fill-opacity:1"
+     id="rect825"
+     width="1514.7457"
+     height="1514.7457"
+     x="-217.37286"
+     y="-219.66098" />
   <polygon
      class="cls-2"
      points="0,1080 815.15,0 0,0 "
