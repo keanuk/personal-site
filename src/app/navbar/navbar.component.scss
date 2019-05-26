@@ -9,6 +9,10 @@
   width: 40px;
 }
 
+.rounded {
+  border-radius: 100%;
+}
+
 .social-icon {
   width: 25px;
   display: inline;
@@ -22,5 +26,6 @@
 }
 
 mat-toolbar {
-  background-color: rgba($color: #fafafa, $alpha: 0.9)
+  background-color: rgba($color: #fafafa, $alpha: 0.9);
+  z-index: 100;
 }

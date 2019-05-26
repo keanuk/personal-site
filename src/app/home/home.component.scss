@@ -1,3 +1,45 @@
+div div div {
+  margin: 0 0 1rem 0;
+}
+
+ul{
+  list-style-type: none;
+}
+
+p {
+  margin: 0 15% 0 15%;
+}
+
+mat-card {
+  border-radius: 8px;
+}
+
+.section {
+  padding: 50px 0 50px 0;
+  width: 100%;
+  left: 0;
+}
+
+.education {
+  background-color: #fafafa;
+}
+
+.skills {
+  background-color: white;
+}
+
+.experience {
+  background-color: #fafafa;
+}
+
+.projects {
+  background-color: white;
+}
+
+.community {
+  background-color: #fafafa;
+}
+
 .grid-container {
   margin: 20px;
 }
@@ -10,6 +52,12 @@
   bottom: 15px;
 }
 
+.card-link {
+  display: block;
+  top: 0;
+  left: 0;
+}
+
 .more-button {
   position: absolute;
   top: 5px;
@@ -18,4 +66,67 @@
 
 .dashboard-card-content {
   text-align: center;
+}
+
+.header-image {
+  height: 200px;
+  width: 100%;
+  text-align: center;
+  font-size: 72pt;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+  padding-top: 20%;
+  min-width: 100%;
+  position: relative;
+  font-weight: bold;
+  color: black;
+  z-index: 1;
+}
+
+.header-image::before {
+  background-image: linear-gradient(to right bottom, #aae4ff, #eefeff);
+  background-size: cover;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130%;
+  z-index: -2;
+}  
+
+.main-content {
+  text-align: center;
+  font-size: 18pt;
+}
+
+.external-card {
+  width: 300px;
+  max-height: 200px;
+  z-index: 2;
+  position: absolute;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
+}
+
+.external-card:hover {
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.8);
+}
+
+.external-card:focus {
+  outline: none;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.8);
+}
+
+.card-content {
+  height: 200px;
+  margin: auto;
+  font-size: 24pt;
+  font-weight: 200;
+  padding: 20px 15px 0 15px;
+}
+
+.card-image {
+  width: 60px;
 }
