@@ -1,7 +1,7 @@
 <div style="width: 100%">
   <div class="header-image">Keanu Kerr</div>
   <section>
-    <mat-grid-list cols="3">
+    <mat-grid-list [cols]="cols | async" rowHeight="3:3" (window:resize)="onResize($event)" gutterSize="16px">
       <mat-grid-tile>
         <mat-card tabindex="0" (click)="goTo('https://github.com/keanuk')" class="external-card">
           <mat-card-content class="card-content">
