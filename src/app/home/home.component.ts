@@ -12,35 +12,13 @@ import { map, takeWhile, startWith } from 'rxjs/operators';
 
 export class HomeComponent implements OnInit{
 
-  constructor(private observableMedia: MediaObserver) { }
-
-  public cols: Observable<number>;
+  constructor() { }
 
   ngOnInit() {
-    const grid = new Map([
-      ["xs", 1],
-      ["sm", 1],
-      ["md", 1],
-      ["lg", 3],
-      ["xl", 3]
-    ]);
-    
-    let start: number;
-    grid.forEach((cols, mqAlias) => {
-      if (this.observableMedia.isActive(mqAlias)) {
-        start = cols;
-      }
-    });
 
-    this.cols = this.observableMedia.asObservable()
-      .pipe(map(change => {
-        console.log(change);
-        console.log(grid.get(change.mqAlias));
-        return grid.get(change.mqAlias);
-      }), startWith(start));  
   }
 
   goTo(url): void {
-    window.location.href=url;
+    window.location.href = url;
   }
 }
