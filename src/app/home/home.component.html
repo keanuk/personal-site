@@ -1,30 +1,32 @@
-<div style="width: 100%">
+<!DOCTYPE html>
+<body>
   <div class="header-image">Keanu Kerr</div>
-  <section>
-    <mat-grid-list cols=3 gutterSize="16px">
-      <mat-grid-tile>
-        <mat-card tabindex="0" (click)="goTo('https://github.com/keanuk')" class="external-card">
-          <mat-card-content class="card-content">
-            <span><img alt="GitHub" src="assets/logo/GitHub/black.png" class="social-icon card-image" color="accent"></span>
-            <br>
-            <span>View my work on</span>
-            <br>
-            <span style="font-weight: 500">GitHub</span>      
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile>
-          <mat-card tabindex="0" (click)="goTo('https://www.linkedin.com/in/keanukerr/')" class="external-card">
-            <mat-card-content class="card-content">
-                <span><img alt="LinkedIn" src="assets/logo/LinkedIn/black.png" class="social-icon card-image" color="accent"></span>
+  <div class="top-content">
+    <section class="card-container" style="height:300px">
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="center center" [ngStyle.sm]="{'height.px': 800}" [ngStyle.xs]="{'height.px': 800}">
+          <div fxFlex="33">
+            <mat-card tabindex="0" (click)="goTo('https://github.com/keanuk')" class="external-card">
+              <mat-card-content class="card-content">
+                <span><img alt="GitHub" src="assets/logo/GitHub/black.png" class="social-icon card-image" color="accent"></span>
                 <br>
-                <span>View my profile on</span>
+                <span>View my work on</span>
                 <br>
-                <span style="font-weight: 500">LinkedIn</span>        
-            </mat-card-content>
-          </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
+                <span style="font-weight: 500">GitHub</span>      
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div fxFlex="33">
+            <mat-card tabindex="0" (click)="goTo('https://www.linkedin.com/in/keanukerr/')" class="external-card">
+              <mat-card-content class="card-content">
+                  <span><img alt="LinkedIn" src="assets/logo/LinkedIn/black.png" class="social-icon card-image" color="accent"></span>
+                  <br>
+                  <span>View my profile on</span>
+                  <br>
+                  <span style="font-weight: 500">LinkedIn</span>        
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div fxFlex>
             <mat-card tabindex="0" (click)="goTo('mailto:keanukerr@gmail.com')" class="external-card">
               <mat-card-content class="card-content">
                   <span><img alt="Email" src="assets/icons/Email/black.svg" class="social-icon card-image" color="accent"></span>
@@ -34,17 +36,18 @@
                   <span style="font-weight: 500">Email</span>      
               </mat-card-content>
             </mat-card>
-          </mat-grid-tile>      
-    </mat-grid-list>
-  </section>
+          </div>     
+        </div> 
+      </section>
+  </div>
   <div class="main-content">
-    <section class="section about-me">
+    <section class="topic">
       <h2>About Me</h2>
       <p>
         I am a software developer.
       </p>
     </section>
-    <section class="section education">
+    <section class="topic">
         <h2>Eductation</h2>
         <ul>
           <li>University of Florida</li>
@@ -52,7 +55,7 @@
           <li>Minor: Studio Art</li>
         </ul>
     </section>
-    <section class="section skills">
+    <section class="topic">
       <h2>Skills</h2>
       <mat-grid-list cols="3">
         <mat-grid-tile>
@@ -97,7 +100,7 @@
         </mat-grid-tile> 
       </mat-grid-list>   
     </section>
-    <section class="section experience">
+    <section class="topic">
       <h2>Work Experience</h2>
       <p>
           Software Developer Intern, Elgato; Munich, Germany - Summer 2016 
@@ -119,7 +122,7 @@
           Used Invision to make interactive mockups for applications        
       </p>
     </section>
-    <section class="section projects">
+    <section class="topic">
       <h2>Student Projects</h2>
       <p>
           Senior Project - Spring 2018
@@ -133,7 +136,7 @@
           Implemented the design in groups over 3 iterations
       </p>
     </section>
-    <section class="section community">
+    <section class="topic">
       <h2>Community Involvement</h2>
       <p>
           Historian, Women in Computer Science - 2017-2018
@@ -143,5 +146,5 @@
       </p>
     </section>
   </div>
-</div>
+</body>
 <br><br><br>

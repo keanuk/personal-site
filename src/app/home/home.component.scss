@@ -1,71 +1,17 @@
-div div div {
-  margin: 0 0 1rem 0;
-}
-
 ul{
   list-style-type: none;
 }
 
 p {
-  margin: 0 15% 0 15%;
+  margin: 0 5% 0 5%;
+}
+
+section {
+  width: 100vw;
 }
 
 mat-card {
   border-radius: 8px;
-}
-
-.section {
-  padding: 50px 0 50px 0;
-  width: 100%;
-  left: 0;
-}
-
-.education {
-  background-color: #fafafa;
-}
-
-.skills {
-  background-color: white;
-}
-
-.experience {
-  background-color: #fafafa;
-}
-
-.projects {
-  background-color: white;
-}
-
-.community {
-  background-color: #fafafa;
-}
-
-.grid-container {
-  margin: 20px;
-}
-
-.dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
-}
-
-.card-link {
-  display: block;
-  top: 0;
-  left: 0;
-}
-
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-}
-
-.dashboard-card-content {
-  text-align: center;
 }
 
 .header-image {
@@ -91,17 +37,20 @@ mat-card {
   top: 0;
   left: 0;
   width: 100%;
-  height: 600px;
+  height: 500px;
   z-index: -2;
 }  
 
-.main-content {
+.card-container {
+  margin: auto;
   text-align: center;
-  font-size: 18pt;
+  position: relative;
+  vertical-align: middle;
+  width: 100%;
 }
 
 .external-card {
-  width: 300px;
+  width: 250px;
   height: 200px;
   z-index: 2;
   position: absolute;
@@ -122,7 +71,7 @@ mat-card {
 .card-content {
   height: 200px;
   margin: auto;
-  font-size: 24pt;
+  font-size: 20pt;
   font-weight: 200;
   padding: 20px 15px 0 15px;
 }
@@ -130,3 +79,27 @@ mat-card {
 .card-image {
   width: 60px;
 }
+
+.top-content {
+  text-align: center;
+  font-size: 18pt;
+  max-width: 900px;
+  margin: auto;
+}
+
+.main-content {
+  text-align: center;
+  font-size: 18pt;
+  max-width: 600px;
+  margin: auto;
+  position: relative;
+}
+
+.topic {
+  padding: 50px 0 50px 0;
+  width: 100%;
+  left: 0;
+  margin: 0 0 1rem 0;
+}
+
+
