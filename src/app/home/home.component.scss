@@ -11,7 +11,7 @@ section {
 }
 
 mat-card {
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .header-image {
@@ -20,7 +20,7 @@ mat-card {
   text-align: center;
   font-size: 72pt;
   text-shadow: 0 1px 2px rgba(0, 0, 0, .3);
-  padding-top: 200px;
+  padding-top: 180px;
   min-width: 100%;
   position: relative;
   font-weight: bold;
@@ -29,7 +29,7 @@ mat-card {
 }
 
 .header-image::before {
-  background-image: linear-gradient(to right bottom, #aae4ff, #eefeff);
+  background-image: linear-gradient(to right bottom, #9de0ff, #eefeff);
   background-size: cover;
   content: "";
   display: block;
@@ -37,9 +37,28 @@ mat-card {
   top: 0;
   left: 0;
   width: 100%;
-  height: 500px;
+  height: 550px;
   z-index: -2;
 }  
+
+.top-content {
+  text-align: center;
+  font-size: 18pt;
+  max-width: 900px;
+  margin: auto;
+  padding-top: 60px;
+  vertical-align: middle;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card-section {
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+  place-content: center center;
+}
 
 .card-container {
   margin: auto;
@@ -47,6 +66,8 @@ mat-card {
   position: relative;
   vertical-align: middle;
   width: 100%;
+  place-content: center center;
+  left: 8px;
 }
 
 .external-card {
@@ -80,26 +101,41 @@ mat-card {
   width: 60px;
 }
 
-.top-content {
-  text-align: center;
-  font-size: 18pt;
-  max-width: 900px;
-  margin: auto;
-}
-
 .main-content {
   text-align: center;
   font-size: 18pt;
-  max-width: 600px;
   margin: auto;
   position: relative;
+  width: 100%;
+  vertical-align: middle;
 }
 
 .topic {
   padding: 50px 0 50px 0;
-  width: 100%;
-  left: 0;
-  margin: 0 0 1rem 0;
+  margin: 0 auto 0 auto;
+  max-width: 600px;
+  vertical-align: middle;
 }
 
+.gray {
+  width: 100%;
+  background-color: #fafafa;
+  background-size: cover;
+}
 
+.bottom-padding {
+  height: 5px;
+  padding: 20px 0 20px 0;
+}
+
+.attachment {
+  width: 50px;
+  display: inline;
+  margin: 5px;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.attachment-link {
+  font-size: 18pt;
+}

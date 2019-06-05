@@ -57,7 +57,7 @@ mat-toolbar mat-toolbar-row {
 
 footer {
   background-color: mat-color($light-primary, lighter);
-  height: 10rem;
+  height: 14rem;
   width: 100%;
   bottom: 0;
   position: relative;
@@ -68,11 +68,8 @@ footer {
   place-items: center center;
 }
 
-footer span {
-  margin: 0;
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
 }
