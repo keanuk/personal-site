@@ -2,7 +2,7 @@
 <body>
   <div class="header-image">Keanu Kerr</div>
   <div class="top-content">
-    <section class="card-section" style="height:300px" [ngStyle.sm]="{'height.px': 800}" [ngStyle.xs]="{'height.px': 800}" [ngStyle.md]="{'height.px': 300}" [ngStyle.lg]="{'height.px': 300}" [ngStyle.xl]="{'height.px': 300}" >
+    <section class="card-section" style="height:300px" [ngStyle.sm]="{'height.px': 800}" [ngStyle.xs]="{'height.px': 800}" [ngStyle.md]="{'height.px': 300}" [ngStyle.lg]="{'height.px': 300}" [ngStyle.xl]="{'height.px': 300}">
       <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-evenly center" class="card-container" [ngStyle.sm]="{'height.px': 800, 'left.px': -145}" [ngStyle.xs]="{'height.px': 800, 'left.px': -145}">
         <div fxFlex="33%">
           <mat-card tabindex="0" (click)="goTo('https://github.com/keanuk')" class="external-card">
@@ -18,22 +18,22 @@
         <div fxFlex="33%">
           <mat-card tabindex="0" (click)="goTo('https://www.linkedin.com/in/keanukerr/')" class="external-card">
             <mat-card-content class="card-content">
-                <span><img alt="LinkedIn" src="assets/logo/LinkedIn/black.png" class="social-icon card-image" color="accent"></span>
-                <br>
-                <span>View my profile on</span>
-                <br>
-                <span style="font-weight: 500">LinkedIn</span>        
+              <span><img alt="LinkedIn" src="assets/logo/LinkedIn/black.png" class="social-icon card-image" color="accent"></span>
+              <br>
+              <span>View my profile on</span>
+              <br>
+              <span style="font-weight: 500">LinkedIn</span>        
             </mat-card-content>
           </mat-card>
         </div>
         <div fxFlex="33%">
           <mat-card tabindex="0" (click)="goTo('mailto:keanukerr@gmail.com')" class="external-card">
             <mat-card-content class="card-content">
-                <span><img alt="Email" src="assets/icons/Email/black.svg" class="social-icon card-image" color="accent"></span>
-                <br>
-                <span>Send me an </span>
-                <br>
-                <span style="font-weight: 500">Email</span>      
+              <span><img alt="Email" src="assets/icons/Email/black.svg" class="social-icon card-image" color="accent"></span>
+              <br>
+              <span>Send me an </span>
+              <br>
+              <span style="font-weight: 500">Email</span>      
             </mat-card-content>
           </mat-card>
         </div>     
@@ -49,19 +49,19 @@
         </p>
       </section>      
     </div>
-    <div>
+    <div class="center-text">
       <section class="topic">
-        <a href="assets/documents/Keanu_Resume.pdf" title="Resume" class="mat-button" mat-button=""><span class="mat-button-wrapper attachment-link"><img alt="Resume" src="assets/icons/Attachment/black.svg" class="attachment" color="accent">Download Resume</span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></a>
+        <a href="assets/documents/Keanu_Resume.pdf" title="Resume" class="mat-button" mat-button=""><span class="mat-button-wrapper attachment-link"><img alt="Resume" src="assets/icons/Attachment/black.svg" class="attachment" color="accent">Download My Resume</span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></a>
       </section>
     </div>
     <div class="gray">
       <section class="topic">
-        <div>
-          <h2>Eductation</h2>
-          <ul>
+        <div class="center-text">
+          <h2>Education</h2>
+          <ul class="no-dot-list">
             <li>University of Florida</li>
             <li>B.S. in Computer Science</li>
-            <li>Minor: Studio Art</li>
+            <li>Minor in Studio Art</li>
           </ul>
         </div>
       </section>
@@ -69,71 +69,85 @@
     <div>
       <section class="topic">
         <h2>Skills</h2>
-        <mat-grid-list cols="3">
-          <mat-grid-tile>
-            <span>
-              <h4>Programming Languages</h4> 
-              <ul>
-                <li>TypeScript</li>
-                <li>Python</li>
-                <li>Java</li>
-                <li>C++</li>
-                <li>C</li>
-              </ul>
-            </span>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <span>
-              <h4>Technology</h4>
-              <ul>
-                <li>*nix shell</li>
-                <li>Git</li>  
-                <li>Angular</li>
-                <li>Node.js</li>
-                <li>jQuery</li>
-                <li>Mongo</li>
-                <li>SQL</li>
-                <li>PyTorch</li>
-                <li>JIRA</li>
-                <li>Agile Development</li>
-              </ul>
-            </span>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <span>
-              <h4>Miscellaneous</h4>
-              <ul>
-                <li>Adobe Creative Cloud</li>
-                <li>Invision</li>
-                <li>UX Design</li>
-                <li>Fluent in German</li>
-              </ul>
-            </span>
-          </mat-grid-tile> 
-        </mat-grid-list>   
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-evenly start" class="card-container">
+          <div fxFlex="33%">
+            <span class="subtitle">Languages</span>
+            <br>
+            <ul class="no-dot-list">
+              <li>TypeScript</li>
+              <li>Python</li>
+              <li>Java</li>
+              <li>C++</li>
+              <li>C</li>
+              <li>HTML</li>
+              <li>CSS</li>
+            </ul>
+          </div>
+          <div fxFlex="33%">
+            <span class="subtitle">Technology</span>
+            <br>
+            <ul class="no-dot-list">
+              <li>*nix Shell</li>
+              <li>Git</li>
+              <li>Node.js</li>  
+              <li>Angular</li>
+              <li>jQuery</li>
+              <li>PyTorch</li>
+              <li>Mongo</li>
+              <li>SQL</li>
+            </ul>
+          </div>
+          <div fxFlex="33%">
+            <span class="subtitle">Miscellaneous</span>
+            <br>
+            <ul class="no-dot-list">
+              <li>Adobe CC</li>
+              <li>Invision</li>
+              <li>UI Design</li>
+              <li>UX Design</li>
+              <li>Agile Development</li>
+              <li>Fluent in German</li>
+            </ul>
+          </div>     
+        </div> 
       </section>
     </div>
     <div class="gray">
       <section class="topic">
         <h2>Work Experience</h2>
         <p>
-            Software Developer Intern, Elgato; Munich, Germany - Summer 2016 
-            Created overlays for Game Capture software
-            Worked on internal downloads monitoring web page 
-            Collaborated in teams of developers using GitHub to build overlays 
-            Programmed extensively in Javascript, HTML, CSS, and Ruby
+          <span class="subtitle">Software Developer Intern, Elgato <span class="sub-year">Summer 2016</span></span>
+          <br>
+          <span>
+            <ul class="dot-list">
+              <li>Created overlays for Game Capture software</li>
+              <li>Worked on internal downloads monitoring web page</li>
+              <li>Collaborated in teams of developers using GitHub to build overlays</li>
+              <li>Programmed extensively in Javascript, HTML, CSS, and Ruby</li>
+            </ul>
+          </span> 
         </p>
         <p>
-            Software Engineering Student, Rapid Genomics; Gainesville, Florida - Spring 2016
-            Maintained communication between group and our client as Project Manager
-            Adhered to Agile principles throughout the development process
-            Implemented MEAN stack to develop a consumer facing site to track genome sequencing
+          <span class="subtitle">Software Engineering Student, Rapid Genomics <span class="sub-year">Spring 2016</span></span>
+          <br>
+          <span>
+            <ul class="dot-list">
+              <li>Maintained communication between group and our client as Project Manager</li>
+              <li>Adhered to Agile principles throughout the development process</li>
+              <li>Implemented MEAN stack to develop a consumer facing site to track genome sequencing</li>
+            </ul>
+          </span>
         </p>
         <p>
-            UX Design Intern, Clarus Agency (Inmar); Austin, Texas - Summer 2015 
-            Designed wireframes for iOS, Android, and Web applications
-            Used Adobe Creative Cloud tools such as Photoshop and Illustrator
-            Used Invision to make interactive mockups for applications        
+          <span class="subtitle">UX Design Intern, Inmar <span class="sub-year">Summer 2015</span></span>
+          <br>
+          <span>
+            <ul class="dot-list">
+              <li>Designed wireframes for iOS, Android, and Web applications</li>
+              <li>Used Adobe Creative Cloud tools such as Photoshop and Illustrator</li>
+              <li>Used Invision to make interactive mockups for applications</li>
+            </ul>
+          </span>        
         </p>
       </section>
     </div>
@@ -141,15 +155,25 @@
       <section class="topic">
         <h2>Student Projects</h2>
         <p>
-            Senior Project - Spring 2018
-            Built front end Angular 5 web application allowing users to create D&D characters
-            Worked in a group to create custom GoLang server to store data
-            Self-hosted the website on a home server and gave it a custom URL        
+          <span class="subtitle">UF Senior Project <span class="sub-year">Spring 2018</span></span>
+          <br>
+          <span>
+            <ul class="dot-list">
+              <li>Built front end for Angular web application allowing users to create custom game characters</li>
+              <li>Worked in a group to create custom GoLang server to store data</li>
+              <li>Self-hosted the website on a home server and gave it a custom URL</li>
+            </ul>
+          </span>        
         </p>
         <p>
-            Object Oriented Programming - Spring 2018
-            Designed RPG in Java using MVC design pattern and following OOP principles
-            Implemented the design in groups over 3 iterations
+          <span class="subtitle">Object Oriented Programming <span class="sub-year">Spring 2018</span></span>
+          <br>
+          <span>
+            <ul class="dot-list">
+              <li>Designed RPG in Java using MVC design pattern and following OOP principles</li>
+              <li>Implemented the design in groups over 3 iterations</li>
+            </ul>
+          </span>
         </p>
       </section>
     </div>
@@ -157,10 +181,15 @@
       <section class="topic">
         <h2>Community Involvement</h2>
         <p>
-            Historian, Women in Computer Science - 2017-2018
-            Advertised for club meetings and events across social media
-            Produced content for advertisements through photography and graphic design
-            Led tabling efforts and community outreach on campus        
+          <span class="subtitle">Historian, Women in Computer Science <span class="sub-year">2017-2018</span></span>
+          <br>
+          <span>
+            <ul class="dot-list">
+              <li>Advertised for club meetings and events across social media</li>
+              <li>Produced content for advertisements through photography and graphic design</li>
+              <li>Led tabling efforts and community outreach on campus</li>
+            </ul>
+          </span>        
         </p>
       </section>
     </div>
