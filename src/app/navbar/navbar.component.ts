@@ -16,5 +16,5 @@ export class NavbarComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private globals: Globals) {}
+  constructor(private breakpointObserver: BreakpointObserver, public globals: Globals) {}
 }
