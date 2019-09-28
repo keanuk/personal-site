@@ -27,16 +27,15 @@ mat-card {
 }
 
 .header-image::before {
-  background-image: linear-gradient(to right bottom, #80d5fc, #eefeff);
+  background-image: linear-gradient(to right bottom, #80cafc, #eef7ff);
   background-size: cover;
   content: "";
   display: block;
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
   height: 580px;
-  z-index: -2;
+  z-index: -1;
 }  
 
 .top-content {
@@ -46,16 +45,8 @@ mat-card {
   margin: auto;
   padding-top: 180px;
   vertical-align: middle;
-  width: 100%;
   display: flex;
   justify-content: center;
-}
-
-.card-section {
-  margin: auto;
-  text-align: center;
-  vertical-align: middle;
-  place-content: center center;
 }
 
 .card-container {
@@ -65,26 +56,25 @@ mat-card {
   vertical-align: middle;
   width: 100%;
   place-content: center center;
-  left: 8px;
 }
 
 .external-card {
   width: 250px;
   height: 200px;
   z-index: 2;
-  position: absolute;
   text-align: center;
   margin: auto;
   cursor: pointer;
+  box-shadow: 0 4px 32px 20px rgba(0,0,0,0.05);
 }
 
 .external-card:hover {
-  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.8);
+  box-shadow: 0 4px 16px 4px rgba(0,0,0,0.4);
 }
 
 .external-card:focus {
   outline: none;
-  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.8);
+  box-shadow: 0 4px 16px 4px rgba(0,0,0,0.4);
 }
 
 .card-content {
@@ -115,7 +105,7 @@ mat-card {
 .topic {
   padding: 30px 0 35px 0;
   margin: 0 auto 0 auto;
-  max-width: 600px;
+  max-width: 750px;
   vertical-align: middle;
 }
 

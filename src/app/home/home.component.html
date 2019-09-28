@@ -2,9 +2,9 @@
 <body>
   <div class="header-image">Keanu Kerr</div>
   <div class="top-content">
-    <section class="card-section" style="height:300px" [ngStyle.sm]="{'height.px': 800}" [ngStyle.xs]="{'height.px': 800}" [ngStyle.md]="{'height.px': 300}" [ngStyle.lg]="{'height.px': 300}" [ngStyle.xl]="{'height.px': 300}">
-      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-evenly center" class="card-container" [ngStyle.sm]="{'height.px': 800, 'left.px': -145}" [ngStyle.xs]="{'height.px': 800, 'left.px': -145}">
-        <div fxFlex="33%">
+    <section [ngStyle.gt-sm]="{'height.px': 300}" [ngStyle.lt-md]="{'height.px': 800}">
+      <div class="card-container" fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign.gt-sm="space-evenly start" fxLayoutAlign.lt-md="space-evenly center" [ngStyle.gt-sm]="{'height.px': 800}" [ngStyle.lt-md]="{'height.px': 800}">
+        <div fxFlex="33.33%">
           <mat-card tabindex="0" (click)="goTo('https://github.com/keanuk')" class="external-card">
             <mat-card-content class="card-content">
               <span><img alt="GitHub" src="assets/logo/GitHub/black.png" class="social-icon card-image" color="accent"></span>
@@ -15,7 +15,7 @@
             </mat-card-content>
           </mat-card>
         </div>
-        <div fxFlex="33%">
+        <div fxFlex="33.33%">
           <mat-card tabindex="0" (click)="goTo('https://www.linkedin.com/in/keanukerr/')" class="external-card">
             <mat-card-content class="card-content">
               <span><img alt="LinkedIn" src="assets/logo/LinkedIn/black.png" class="social-icon card-image" color="accent"></span>
@@ -26,7 +26,7 @@
             </mat-card-content>
           </mat-card>
         </div>
-        <div fxFlex="33%">
+        <div fxFlex="33.33%">
           <mat-card tabindex="0" (click)="goTo('mailto:keanukerr@gmail.com')" class="external-card">
             <mat-card-content class="card-content">
               <span><img alt="Email" src="assets/icons/Email/black.svg" class="social-icon card-image" color="accent"></span>
@@ -61,8 +61,10 @@
         <div class="center-text">
           <h2>Education</h2>
           <ul class="no-dot-list">
-            <li>University of Florida</li>
-            <li>B.S. in Computer Science</li>
+            <li class="subtitle">University of Edinburgh</li>
+            <li>MSc in Informatics</li>
+            <li class="subtitle">University of Florida</li>
+            <li>BSc in Computer Science</li>
             <li>Minor in Studio Art</li>
           </ul>
         </div>
@@ -71,8 +73,8 @@
     <div>
       <section class="topic">
         <h2>Skills</h2>
-        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-evenly start" fxLayoutAlign.xs="space-evenly center" class="skill-container">
-          <div fxFlex="33%">
+        <div class="skill-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-evenly start" fxLayoutAlign.xs="space-evenly center">
+          <div fxFlex="33.33%">
             <span class="subtitle">Languages</span>
             <br>
             <ul class="no-dot-list">
@@ -85,7 +87,7 @@
               <li>CSS</li>
             </ul>
           </div>
-          <div fxFlex="33%">
+          <div fxFlex="33.33%">
             <span class="subtitle">Technology</span>
             <br>
             <ul class="no-dot-list">
@@ -99,7 +101,7 @@
               <li>SQL</li>
             </ul>
           </div>
-          <div fxFlex="33%">
+          <div fxFlex="33.33%">
             <span class="subtitle">Miscellaneous</span>
             <br>
             <ul class="no-dot-list">
