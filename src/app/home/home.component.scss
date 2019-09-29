@@ -27,7 +27,7 @@ mat-card {
 }
 
 .header-image::before {
-  background-image: linear-gradient(to right bottom, #80cafc, #eef7ff);
+  background-image: linear-gradient(to right bottom, #a6ebfc, #eefbff);
   background-size: cover;
   content: "";
   display: block;
@@ -41,7 +41,7 @@ mat-card {
 .top-content {
   text-align: center;
   font-size: 18pt;
-  max-width: 900px;
+  max-width: 950px;
   margin: auto;
   padding-top: 180px;
   vertical-align: middle;
