@@ -1,3 +1,4 @@
 app-navbar {
-    display: none;
+    opacity: 0;
+    transition: opacity 0.15s;
 }
