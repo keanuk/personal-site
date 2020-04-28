@@ -1,0 +1,1 @@
+ng deploy --repo=https://github.com/keanuk/personal-site.git --cname=www.keanukerr.com
