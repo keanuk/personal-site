@@ -10,13 +10,14 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/personal-site",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -53,6 +54,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -139,5 +144,8 @@
       }
     }
   },
-  "defaultProject": "personal-site"
+  "defaultProject": "personal-site",
+  "cli": {
+    "analytics": "bf1a785e-991c-4c43-a155-acbb58d70894"
+  }
 }
