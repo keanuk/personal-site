@@ -23,7 +23,6 @@
     "@angular/platform-browser-dynamic": "^13.0.0-next.8",
     "@angular/router": "^13.0.0-next.8",
     "core-js": "^3.6.5",
-    "ngx-markdown": "^9.0.0",
     "rxjs": "^6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
