@@ -51,10 +51,10 @@
   },
   "overrides": {
     "@angular/flex-layout": {
-    "@angular/cdk": "^14.0.0",
-    "@angular/common": "^14.0.0",
-    "@angular/core": "^14.0.0",
-    "@angular/platform-browser": "^14.0.0"
+    "@angular/cdk": "^14.0.2",
+    "@angular/common": "^14.0.2",
+    "@angular/core": "^14.0.2",
+    "@angular/platform-browser": "^14.0.2"
     }
   }
 }
