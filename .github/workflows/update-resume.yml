@@ -1,0 +1,60 @@
+name: Update Resume
+
+on:
+  schedule:
+    # Check for updates daily at 9 AM UTC
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+    # Allow manual triggering
+  repository_dispatch:
+    # Allow triggering from resume repository
+    types: [resume-updated]
+
+jobs:
+  update-resume:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout personal site repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download latest resume PDF
+        run: |
+          echo "Downloading latest resume from resume repository..."
+          curl -L -o temp_resume.pdf https://raw.githubusercontent.com/keanuk/keanu-kerr-resume/main/keanu-kerr-resume.pdf
+
+      - name: Check if resume has changed
+        id: check_changes
+        run: |
+          if [ ! -f "static/documents/Keanu_Kerr_Resume.pdf" ]; then
+            echo "No existing resume found, will update"
+            echo "changed=true" >> $GITHUB_OUTPUT
+          elif ! cmp -s temp_resume.pdf "static/documents/Keanu_Kerr_Resume.pdf"; then
+            echo "Resume has changed, will update"
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "Resume unchanged"
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update resume file
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          mv temp_resume.pdf static/documents/Keanu_Kerr_Resume.pdf
+          echo "Resume updated successfully"
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add static/documents/Keanu_Kerr_Resume.pdf
+          git commit -m "chore: update resume PDF from resume repository"
+          git push
+
+      - name: Clean up
+        if: always()
+        run: |
+          rm -f temp_resume.pdf
