@@ -16,11 +16,13 @@ This document describes the dark mode implementation for the personal portfolio 
 ### Theme Store (`src/lib/stores/theme.js`)
 
 A Svelte store that manages the theme state with three possible values:
+
 - `'light'` - Light theme
-- `'dark'` - Dark theme  
+- `'dark'` - Dark theme
 - `'system'` - Follow system preference
 
 Key features:
+
 - Persists theme preference in localStorage
 - Automatically applies theme to DOM via `data-theme` attribute
 - Listens for system theme changes when in 'system' mode
@@ -31,25 +33,26 @@ Uses CSS custom properties for theming:
 
 ```css
 :root {
-  /* Light theme variables */
-  --primary-color: #7700ff;
-  --text-color: #333;
-  --background-color: #ffffff;
-  /* ... more variables */
+	/* Light theme variables */
+	--primary-color: #7700ff;
+	--text-color: #333;
+	--background-color: #ffffff;
+	/* ... more variables */
 }
 
 [data-theme='dark'] {
-  /* Dark theme overrides */
-  --primary-color: #9f4fff;
-  --text-color: #e0e0e0;
-  --background-color: #121212;
-  /* ... more variables */
+	/* Dark theme overrides */
+	--primary-color: #9f4fff;
+	--text-color: #e0e0e0;
+	--background-color: #121212;
+	/* ... more variables */
 }
 ```
 
 ### Theme Toggle Component (`src/lib/components/ThemeToggle.svelte`)
 
 A dropdown component that allows users to:
+
 - View current theme selection
 - Switch between Light, Dark, and System themes
 - Positioned in the footer as requested
@@ -69,6 +72,7 @@ Automatically handles theme-appropriate logos and icons using two strategies:
 ### Theme Utilities (`src/lib/utils/theme.js`)
 
 Helper functions for:
+
 - Detecting current effective theme
 - Determining which assets should use inversion vs file switching
 - Getting appropriate asset paths based on theme
@@ -80,15 +84,15 @@ Theme is applied immediately in `src/app.html` before the main application loads
 ```javascript
 // Inline script in <head>
 (function () {
-  const stored = localStorage.getItem('theme-preference');
-  const theme = stored || 'system';
-  
-  if (theme === 'system') {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-  } else {
-    document.documentElement.setAttribute('data-theme', theme);
-  }
+	const stored = localStorage.getItem('theme-preference');
+	const theme = stored || 'system';
+
+	if (theme === 'system') {
+		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+	} else {
+		document.documentElement.setAttribute('data-theme', theme);
+	}
 })();
 ```
 
@@ -126,8 +130,8 @@ import { theme } from '$lib/stores/theme';
 theme.set('dark');
 
 // Subscribe to changes
-theme.subscribe(currentTheme => {
-  console.log('Theme changed to:', currentTheme);
+theme.subscribe((currentTheme) => {
+	console.log('Theme changed to:', currentTheme);
 });
 
 // Initialize (call once in layout)
@@ -138,28 +142,24 @@ theme.init();
 
 ```svelte
 <script>
-  import ThemedAsset from '$lib/components/ThemedAsset.svelte';
+	import ThemedAsset from '$lib/components/ThemedAsset.svelte';
 </script>
 
-<ThemedAsset 
-  src="/logo/GitHub/black.svg" 
-  alt="GitHub" 
-  className="icon" 
-/>
+<ThemedAsset src="/logo/GitHub/black.svg" alt="GitHub" className="icon" />
 ```
 
 ### Manual CSS Theming
 
 ```css
 .my-component {
-  background: var(--background-color);
-  color: var(--text-color);
-  border: 1px solid var(--footer-border);
+	background: var(--background-color);
+	color: var(--text-color);
+	border: 1px solid var(--footer-border);
 }
 
 /* Theme-specific overrides if needed */
 [data-theme='dark'] .special-element {
-  /* Dark mode specific styles */
+	/* Dark mode specific styles */
 }
 ```
 

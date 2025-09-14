@@ -56,6 +56,7 @@ export const skills = {
 		'REST',
 		'gRPC',
 		'PostgreSQL',
+		'Nix',
 		'Docker',
 		'Kubernetes',
 		'AWS',
