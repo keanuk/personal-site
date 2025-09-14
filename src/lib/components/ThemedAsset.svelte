@@ -3,16 +3,22 @@
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 
+	/** @type {string} */
 	export let src;
+	/** @type {string} */
 	export let alt;
+	/** @type {string} */
 	export let className = '';
+	/** @type {number | undefined} */
 	export let width = undefined;
+	/** @type {number | undefined} */
 	export let height = undefined;
 
 	// Determine if this asset should use CSS inversion or file switching
 	const useInvert = shouldInvertAsset(src);
 	const themeClass = useInvert ? 'theme-invertible' : '';
 
+	/** @type {string} */
 	let currentSrc = src;
 
 	function updateSrc() {
