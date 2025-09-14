@@ -49,7 +49,7 @@ export const skills = {
 		'C',
 		'Bash'
 	],
-	frameworksAndApis: ['Protobuf', 'Spring', 'JAX-RS', 'Node', 'Angular', 'Elasticsearch'],
+	frameworksAndLibraries: ['Protobuf', 'Spring', 'JAX-RS', 'Node', 'Angular', 'Elasticsearch'],
 	technologiesAndServices: [
 		'Linux',
 		'Git',
@@ -119,13 +119,12 @@ export const projects = [
 
 export const communityInvolvement = [
 	{
-		role: 'Historian',
-		organization: 'Women in Computer Science',
-		period: '2017-2018',
+		role: 'Contributor',
+		organization: 'Nixpkgs',
+		period: '2024 - Present',
 		activities: [
-			'Advertised for club meetings and events across social media',
-			'Produced content for advertisements through photography and graphic design',
-			'Led tabling efforts and community outreach on campus'
+			'Contributed unit tests and bug fixes to improve package reliability',
+			'Add nixos-hardware configurations to improve device compatibility'
 		]
 	}
 ];

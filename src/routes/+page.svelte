@@ -1,6 +1,7 @@
 <script>
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import ThemedAsset from '$lib/components/ThemedAsset.svelte';
 	import {
 		personalInfo,
 		socialLinks,
@@ -49,7 +50,7 @@
 				on:keydown={(e) => e.key === 'Enter' && goTo(socialLinks.github)}
 			>
 				<div class="card-content">
-					<img src="/logo/GitHub/black.png" alt="GitHub" class="card-icon" />
+					<ThemedAsset src="/logo/GitHub/black.svg" alt="GitHub" className="card-icon" />
 					<span>View my work on</span>
 					<span class="card-highlight">GitHub</span>
 				</div>
@@ -63,7 +64,7 @@
 				on:keydown={(e) => e.key === 'Enter' && goTo(socialLinks.linkedin)}
 			>
 				<div class="card-content">
-					<img src="/logo/LinkedIn/black.png" alt="LinkedIn" class="card-icon" />
+					<ThemedAsset src="/logo/LinkedIn/black.png" alt="LinkedIn" className="card-icon" />
 					<span>View my profile on</span>
 					<span class="card-highlight">LinkedIn</span>
 				</div>
@@ -77,7 +78,7 @@
 				on:keydown={(e) => e.key === 'Enter' && goTo(socialLinks.email)}
 			>
 				<div class="card-content">
-					<img src="/icons/Email/black.svg" alt="Email" class="card-icon" />
+					<ThemedAsset src="/icons/Email/black.svg" alt="Email" className="card-icon" />
 					<span>Send me an</span>
 					<span class="card-highlight">Email</span>
 				</div>
@@ -98,7 +99,7 @@
 		<!-- Resume Download -->
 		<section class="content-section center-text">
 			<a href={socialLinks.resume} class="resume-link" download>
-				<img src="/icons/Attachment/black.svg" alt="Resume" class="attachment-icon" />
+				<ThemedAsset src="/icons/Attachment/black.svg" alt="Resume" className="attachment-icon" />
 				Download My Resume
 			</a>
 		</section>
@@ -132,9 +133,9 @@
 					</ul>
 				</div>
 				<div class="skill-category">
-					<span class="subtitle">Frameworks & APIs</span>
+					<span class="subtitle">Frameworks & Libraries</span>
 					<ul class="no-dot-list">
-						{#each skills.frameworksAndApis as framework}
+						{#each skills.frameworksAndLibraries as framework}
 							<li>{framework}</li>
 						{/each}
 					</ul>
@@ -241,7 +242,7 @@
 	}
 
 	.hero-title {
-		font-size: 4.5rem;
+		font-size: 9rem;
 		font-weight: bold;
 		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 		margin: 0;
@@ -251,7 +252,7 @@
 	/* Quick Links */
 	.quick-links {
 		padding: 3rem 1rem;
-		background: white;
+		background: var(--background-color);
 		display: flex;
 		justify-content: center;
 	}
@@ -265,7 +266,7 @@
 	}
 
 	.card {
-		background: white;
+		background: var(--background-color);
 		border-radius: var(--border-radius);
 		box-shadow: var(--card-shadow);
 		padding: 2rem 1rem;
@@ -273,7 +274,8 @@
 		cursor: pointer;
 		transition:
 			box-shadow 0.3s ease,
-			transform 0.2s ease;
+			transform 0.2s ease,
+			background-color 0.2s ease;
 		min-height: 200px;
 		display: flex;
 		align-items: center;
@@ -294,12 +296,6 @@
 		gap: 0.5rem;
 		font-size: 1.25rem;
 		font-weight: 300;
-	}
-
-	.card-icon {
-		width: 60px;
-		height: 60px;
-		margin-bottom: 1rem;
 	}
 
 	.card-highlight {
@@ -362,7 +358,13 @@
 		color: white;
 	}
 
-	.attachment-icon {
+	:global(.card-icon) {
+		width: 60px;
+		height: 60px;
+		margin-bottom: 1rem;
+	}
+
+	:global(.attachment-icon) {
 		width: 24px;
 		height: 24px;
 	}
@@ -421,7 +423,7 @@
 			font-size: 1.1rem;
 		}
 
-		.card-icon {
+		:global(.card-icon) {
 			width: 50px;
 			height: 50px;
 		}

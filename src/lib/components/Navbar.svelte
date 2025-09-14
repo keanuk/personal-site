@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { personalInfo } from '$lib/data';
+	import ThemedAsset from './ThemedAsset.svelte';
 
 	let navbar;
 	let isVisible = false;
@@ -26,7 +27,7 @@
 	<div class="navbar-content">
 		<div class="navbar-left">
 			<a href="/" class="logo-link">
-				<img src="/logo/Keanu/black.svg" alt="Logo" class="logo" />
+				<ThemedAsset src="/logo/Keanu/black.svg" alt="Logo" className="logo" />
 			</a>
 			<span class="name">{personalInfo.fullName}</span>
 		</div>
@@ -47,12 +48,15 @@
 		top: 0;
 		left: 0;
 		right: 0;
-		background-color: #f5f5f5;
+		background-color: var(--footer-background);
 		z-index: 1000;
 		opacity: 0;
-		transition: opacity 0.3s ease;
+		transition:
+			opacity 0.3s ease,
+			background-color 0.2s ease;
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		height: 64px;
+		border-bottom: 1px solid var(--footer-border);
 	}
 
 	.navbar.visible {
@@ -80,7 +84,7 @@
 		align-items: center;
 	}
 
-	.logo {
+	:global(.logo) {
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
@@ -117,7 +121,7 @@
 			font-size: 1rem;
 		}
 
-		.logo,
+		:global(.logo),
 		.profile-image {
 			width: 36px;
 			height: 36px;
