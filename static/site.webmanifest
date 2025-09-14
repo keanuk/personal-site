@@ -1,0 +1,24 @@
+{
+  "name": "Keanu Kerr - Software Engineer",
+  "short_name": "Keanu Kerr",
+  "description": "Personal website and portfolio of Keanu Kerr, Software Engineer",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff249c",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo/Keanu/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
