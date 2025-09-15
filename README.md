@@ -32,10 +32,12 @@ Built with **SvelteKit** for optimal performance and modern web standards.
 Choose one of the following setups:
 
 **Recommended: Deno + just**
+
 - [Deno](https://deno.land/) 2.0+
 - [just](https://github.com/casey/just) (command runner)
 
 **Alternative: Traditional Node.js**
+
 - Node.js 18+
 - npm
 
@@ -106,11 +108,13 @@ The site automatically deploys to GitHub Pages when changes are pushed to the ma
 For manual deployment:
 
 **With just**:
+
 ```bash
 just deploy
 ```
 
 **With npm**:
+
 ```bash
 npm run build
 ./deploy-to-gh-pages.sh
@@ -146,12 +150,14 @@ To adapt this site for your own use:
 This project uses a hybrid Deno + npm approach that combines the best of both ecosystems:
 
 **Deno advantages**:
+
 - **Built-in tooling**: Formatter, linter, and TypeScript support out of the box
 - **Modern runtime**: Web standards API, secure by default
 - **Better development experience**: No need for separate tools like Prettier or ESLint for basic formatting/linting
 - **Simplified dependency management**: Direct imports from URLs and JSR
 
-**npm compatibility**: 
+**npm compatibility**:
+
 - Complex build toolchains (Vite, SvelteKit, esbuild) still work through npm
 - Existing ecosystem packages remain available
 - Gradual migration path without breaking existing workflows

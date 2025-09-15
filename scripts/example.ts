@@ -5,8 +5,8 @@
  * Demonstrates Deno's built-in capabilities and how it integrates with the SvelteKit project
  */
 
-import { walk } from "jsr:@std/fs/walk";
-import { join } from "jsr:@std/path";
+import { walk } from 'jsr:@std/fs/walk';
+import { join } from 'jsr:@std/path';
 
 interface ProjectStats {
 	totalFiles: number;
@@ -23,36 +23,36 @@ async function analyzeProject(): Promise<ProjectStats> {
 		totalFiles: 0,
 		fileTypes: {},
 		totalLines: 0,
-		directories: [],
+		directories: []
 	};
 
 	const projectRoot = join(Deno.cwd());
-	const excludeDirs = ["node_modules", ".svelte-kit", "build", ".git"];
+	const excludeDirs = ['node_modules', '.svelte-kit', 'build', '.git'];
 
-	console.log("🔍 Analyzing project structure...\n");
+	console.log('🔍 Analyzing project structure...\n');
 
 	for await (const entry of walk(projectRoot, {
-		skip: excludeDirs.map(dir => new RegExp(dir)),
+		skip: excludeDirs.map((dir) => new RegExp(dir))
 	})) {
 		if (entry.isFile) {
 			stats.totalFiles++;
 
 			// Count file types
-			const ext = entry.path.split(".").pop() || "no-ext";
+			const ext = entry.path.split('.').pop() || 'no-ext';
 			stats.fileTypes[ext] = (stats.fileTypes[ext] || 0) + 1;
 
 			// Count lines in text files
 			if (isTextFile(ext)) {
 				try {
 					const content = await Deno.readTextFile(entry.path);
-					stats.totalLines += content.split("\n").length;
+					stats.totalLines += content.split('\n').length;
 				} catch {
 					// Skip files that can't be read
 				}
 			}
 		} else if (entry.isDirectory) {
-			const relativePath = entry.path.replace(projectRoot, "").slice(1);
-			if (relativePath && !excludeDirs.some(dir => relativePath.includes(dir))) {
+			const relativePath = entry.path.replace(projectRoot, '').slice(1);
+			if (relativePath && !excludeDirs.some((dir) => relativePath.includes(dir))) {
 				stats.directories.push(relativePath);
 			}
 		}
@@ -65,9 +65,7 @@ async function analyzeProject(): Promise<ProjectStats> {
  * Check if a file extension represents a text file
  */
 function isTextFile(ext: string): boolean {
-	const textExtensions = [
-		"ts", "js", "svelte", "css", "html", "md", "json", "txt", "yaml", "yml"
-	];
+	const textExtensions = ['ts', 'js', 'svelte', 'css', 'html', 'md', 'json', 'txt', 'yaml', 'yml'];
 	return textExtensions.includes(ext);
 }
 
@@ -75,11 +73,11 @@ function isTextFile(ext: string): boolean {
  * Format file size in human readable format
  */
 function formatBytes(bytes: number): string {
-	if (bytes === 0) return "0 Bytes";
+	if (bytes === 0) return '0 Bytes';
 	const k = 1024;
-	const sizes = ["Bytes", "KB", "MB", "GB"];
+	const sizes = ['Bytes', 'KB', 'MB', 'GB'];
 	const i = Math.floor(Math.log(bytes) / Math.log(k));
-	return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+	return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 }
 
 /**
@@ -101,43 +99,43 @@ Generated on: ${new Date().toISOString()}
 ${Object.entries(stats.fileTypes)
 	.sort(([, a], [, b]) => b - a)
 	.map(([ext, count]) => `- **${ext}**: ${count} files`)
-	.join("\n")}
+	.join('\n')}
 
 ## 🗂️ Directory Structure
 
 ${stats.directories
 	.sort()
-	.map(dir => `- ${dir}`)
-	.join("\n")}
+	.map((dir) => `- ${dir}`)
+	.join('\n')}
 
 ---
 
 *This report was generated using Deno 🦕*
 `;
 
-	await Deno.writeTextFile("project-report.md", reportContent);
-	console.log("📄 Report saved to project-report.md");
+	await Deno.writeTextFile('project-report.md', reportContent);
+	console.log('📄 Report saved to project-report.md');
 }
 
 /**
  * Main function
  */
 async function main(): Promise<void> {
-	console.log("🦕 Deno Project Analysis Tool\n");
+	console.log('🦕 Deno Project Analysis Tool\n');
 	console.log("This script demonstrates Deno's capabilities:");
-	console.log("- File system operations");
-	console.log("- Built-in TypeScript support");
-	console.log("- Standard library modules");
-	console.log("- Web standard APIs\n");
+	console.log('- File system operations');
+	console.log('- Built-in TypeScript support');
+	console.log('- Standard library modules');
+	console.log('- Web standard APIs\n');
 
 	try {
 		const stats = await analyzeProject();
 
-		console.log("✅ Analysis complete!\n");
+		console.log('✅ Analysis complete!\n');
 		console.log(`📊 Found ${stats.totalFiles} files with ${stats.totalLines} lines of code`);
 		console.log(`📁 Project has ${stats.directories.length} directories\n`);
 
-		console.log("🔝 Top file types:");
+		console.log('🔝 Top file types:');
 		Object.entries(stats.fileTypes)
 			.sort(([, a], [, b]) => b - a)
 			.slice(0, 5)
@@ -145,13 +143,12 @@ async function main(): Promise<void> {
 				console.log(`   ${ext}: ${count} files`);
 			});
 
-		console.log("\n📄 Generating report...");
+		console.log('\n📄 Generating report...');
 		await generateReport(stats);
 
 		console.log("\n🎉 Done! Use 'deno run --allow-read scripts/example.ts' to run this script");
-
 	} catch (error) {
-		console.error("❌ Error analyzing project:", error.message);
+		console.error('❌ Error analyzing project:', error.message);
 		Deno.exit(1);
 	}
 }
