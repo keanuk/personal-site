@@ -18,8 +18,10 @@ Built with **SvelteKit** for optimal performance and modern web standards.
 
 - **Framework**: SvelteKit
 - **Language**: TypeScript
+- **Runtime**: Deno (with npm compatibility) + Node.js
 - **Styling**: CSS with custom properties
 - **Build Tool**: Vite
+- **Task Runner**: Deno tasks + just
 - **Deployment**: GitHub Pages
 - **CI/CD**: GitHub Actions
 
@@ -27,6 +29,13 @@ Built with **SvelteKit** for optimal performance and modern web standards.
 
 ### Prerequisites
 
+Choose one of the following setups:
+
+**Recommended: Deno + just**
+- [Deno](https://deno.land/) 2.0+
+- [just](https://github.com/casey/just) (command runner)
+
+**Alternative: Traditional Node.js**
 - Node.js 18+
 - npm
 
@@ -39,21 +48,49 @@ git clone https://github.com/keanuk/personal-site.git
 cd personal-site
 ```
 
-2. Install dependencies:
+2. **With Deno + just (Recommended)**:
 
 ```bash
-npm install
+# Install dependencies
+just install
+
+# Start development server
+just dev
 ```
 
-3. Start the development server:
+**Or with npm directly**:
 
 ```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
 The site will be available at `http://localhost:5173`
 
-### Available Scripts
+### Available Commands
+
+**With just (uses Deno tasks internally)**:
+
+- `just dev` - Start development server
+- `just build` - Build for production
+- `just preview` - Preview production build locally
+- `just check` - Run type checking
+- `just lint` - Run ESLint and linting
+- `just format` - Format code with Prettier
+- `just clean` - Clean build artifacts
+- `just verify` - Run all checks (lint + type check)
+- `just serve` - Serve built files with Deno's file server
+
+**Deno-specific commands**:
+
+- `just fmt-deno` - Format with Deno's built-in formatter
+- `just lint-deno` - Lint with Deno's built-in linter
+- `just typecheck-deno` - Type check with Deno
+
+**Traditional npm scripts** (still available):
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
@@ -68,6 +105,12 @@ The site automatically deploys to GitHub Pages when changes are pushed to the ma
 
 For manual deployment:
 
+**With just**:
+```bash
+just deploy
+```
+
+**With npm**:
 ```bash
 npm run build
 ./deploy-to-gh-pages.sh
@@ -97,6 +140,23 @@ To adapt this site for your own use:
 3. Modify styling in `src/app.css` and component styles
 4. Update the CNAME file with your domain
 5. Configure GitHub Pages in your repository settings
+
+## Why Deno?
+
+This project uses a hybrid Deno + npm approach that combines the best of both ecosystems:
+
+**Deno advantages**:
+- **Built-in tooling**: Formatter, linter, and TypeScript support out of the box
+- **Modern runtime**: Web standards API, secure by default
+- **Better development experience**: No need for separate tools like Prettier or ESLint for basic formatting/linting
+- **Simplified dependency management**: Direct imports from URLs and JSR
+
+**npm compatibility**: 
+- Complex build toolchains (Vite, SvelteKit, esbuild) still work through npm
+- Existing ecosystem packages remain available
+- Gradual migration path without breaking existing workflows
+
+The `deno.json` configuration provides tasks that use Deno where it excels (formatting, linting, type checking) while delegating complex builds to the proven npm toolchain.
 
 ## License
 

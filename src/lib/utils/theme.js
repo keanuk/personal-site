@@ -18,7 +18,7 @@ export const INVERTIBLE_ASSETS = [
 	'/logo/GitHub/black.svg',
 	'/logo/Keanu/black.svg',
 	'/icons/Email/black.svg',
-	'/icons/Attachment/black.svg'
+	'/icons/Attachment/black.svg',
 ];
 
 /**

@@ -1,0 +1,74 @@
+{
+	"version": "1.0.0",
+	"tasks": {
+		"dev": "npm run dev",
+		"build": "npm run build",
+		"preview": "npm run preview",
+		"check": "npm run check",
+		"check:watch": "npm run check:watch",
+		"lint": "npm run lint",
+		"format": "npm run format",
+		"lint-deno": "deno lint",
+		"fmt-deno": "deno fmt",
+		"typecheck-deno": "deno check src/**/*.ts",
+		"clean": "deno run --allow-read --allow-write jsr:@std/fs/empty-dir build && deno run --allow-read --allow-write jsr:@std/fs/empty-dir .svelte-kit",
+		"serve": "deno run --allow-net --allow-read jsr:@std/http/file-server ./build",
+		"deploy": "deno run --allow-all ./deploy-to-gh-pages.sh",
+		"install": "npm install",
+		"fresh": "deno task clean && deno task install",
+		"verify": "deno task lint && deno task check",
+		"ci": "deno task install && deno task verify && deno task build",
+		"setup": "deno task install && deno task dev",
+		"update": "deno run --allow-net --allow-read --allow-write npm:npm-check-updates --interactive",
+		"example": "deno run --allow-read --allow-write scripts/example.ts"
+	},
+	"imports": {
+		"@/": "./src/",
+		"@std/": "jsr:@std/",
+		"$lib/": "./src/lib/",
+		"$lib": "./src/lib/index.js"
+	},
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"lib": ["dom", "dom.asynciterable", "deno.ns", "es2022"],
+		"moduleDetection": "force",
+		"strict": true,
+		"useUnknownInCatchVariables": false,
+		"exactOptionalPropertyTypes": true,
+		"noImplicitReturns": true,
+		"noImplicitOverride": true,
+		"noUncheckedIndexedAccess": true
+	},
+	"fmt": {
+		"useTabs": true,
+		"lineWidth": 100,
+		"indentWidth": 4,
+		"semiColons": true,
+		"singleQuote": true,
+		"proseWrap": "preserve",
+		"include": ["src/", "*.ts", "*.js", "*.mjs"],
+		"exclude": [
+			"build/",
+			".svelte-kit/",
+			"node_modules/",
+			"static/",
+			"package.json",
+			"package-lock.json"
+		]
+	},
+	"lint": {
+		"include": ["src/", "*.ts", "*.js", "*.mjs"],
+		"exclude": ["build/", ".svelte-kit/", "node_modules/", "static/"],
+		"rules": {
+			"tags": ["recommended"],
+			"include": ["ban-untagged-todo"],
+			"exclude": ["no-explicit-any", "explicit-function-return-type"]
+		}
+	},
+	"test": {
+		"include": ["src/**/*test.{ts,js}", "tests/**/*.{ts,js}"],
+		"exclude": ["build/", ".svelte-kit/", "node_modules/"]
+	},
+	"nodeModulesDir": "auto"
+}
