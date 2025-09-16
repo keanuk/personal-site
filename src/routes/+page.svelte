@@ -237,8 +237,68 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: var(--primary-gradient);
+		background:
+			radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+			linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffd93d, #ff9ff3, #6c5ce7);
+		background-size:
+			20px 20px,
+			600% 600%;
+		animation: spectrum 15s ease-in-out infinite;
 		color: white;
+	}
+
+	@keyframes spectrum {
+		0% {
+			background-position:
+				0% 0%,
+				0% 50%;
+		}
+		16.67% {
+			background-position:
+				0% 0%,
+				20% 30%;
+		}
+		33.33% {
+			background-position:
+				0% 0%,
+				40% 70%;
+		}
+		50% {
+			background-position:
+				0% 0%,
+				60% 20%;
+		}
+		66.67% {
+			background-position:
+				0% 0%,
+				80% 80%;
+		}
+		83.33% {
+			background-position:
+				0% 0%,
+				100% 40%;
+		}
+		100% {
+			background-position:
+				0% 0%,
+				0% 50%;
+		}
+	}
+
+	.hero-background::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image:
+			radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+			radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+		background-size:
+			15px 15px,
+			25px 25px;
+		pointer-events: none;
 	}
 
 	.hero-title {
