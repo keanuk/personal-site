@@ -260,9 +260,10 @@
 	.cards-container {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 2rem;
-		max-width: 950px;
+		gap: clamp(1rem, 3vw, 2rem);
+		max-width: min(950px, 95vw);
 		width: 100%;
+		padding: 0 1rem;
 	}
 
 	.card {
@@ -372,10 +373,29 @@
 	/* Skills */
 	.skills-container {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 2rem;
+		grid-template-columns: repeat(3, 1fr);
+		gap: clamp(1rem, 3vw, 2rem);
 		margin: 2rem auto;
-		max-width: var(--max-content-width);
+		max-width: min(1200px, 95vw);
+		padding: 0 1rem;
+	}
+
+	/* Move to 2-column layout for skills */
+	@media (max-width: 1100px) {
+		.skills-container {
+			grid-template-columns: repeat(2, 1fr);
+			max-width: min(900px, 90vw);
+			gap: clamp(1rem, 2.5vw, 1.5rem);
+		}
+	}
+
+	/* Center third skill item in ALL 2-column scenarios - higher specificity */
+	@media (max-width: 1100px) {
+		.skills-container .skill-category:nth-child(3):nth-last-child(1) {
+			grid-column: 1 / -1 !important;
+			max-width: 300px !important;
+			margin: 0 auto !important;
+		}
 	}
 
 	.skill-category {
@@ -404,7 +424,27 @@
 		gap: 0.5rem;
 	}
 
-	/* Responsive Design */
+	/* Tablet Responsive Design */
+	@media (max-width: 1024px) {
+		.hero-title {
+			font-size: 3.5rem;
+		}
+
+		.cards-container {
+			grid-template-columns: repeat(2, 1fr);
+			max-width: min(600px, 90vw);
+			gap: clamp(1rem, 2.5vw, 1.5rem);
+		}
+
+		/* Center third card when in 2+1 layout - maintain card size */
+		.cards-container .card:nth-child(3):nth-last-child(1) {
+			grid-column: 1 / -1;
+			width: 250px;
+			margin: 0 auto;
+		}
+	}
+
+	/* Tablet Portrait and Small Desktop */
 	@media (max-width: 768px) {
 		.hero-title {
 			font-size: 3rem;
@@ -412,7 +452,8 @@
 
 		.cards-container {
 			grid-template-columns: 1fr;
-			gap: 1.5rem;
+			gap: clamp(1rem, 3vw, 1.5rem);
+			max-width: 100%;
 		}
 
 		.card {
@@ -428,9 +469,13 @@
 			height: 50px;
 		}
 
-		.skills-container {
-			grid-template-columns: 1fr;
-			gap: 1.5rem;
+		/* Reset grid column spanning for mobile */
+		.cards-container .card:nth-child(3):nth-last-child(1),
+		.skills-container .skill-category:nth-child(3):nth-last-child(1) {
+			grid-column: auto;
+			max-width: none;
+			width: auto;
+			margin: 0;
 		}
 
 		.about-text {
@@ -448,6 +493,28 @@
 		}
 	}
 
+	/* Mobile Landscape and Small Tablets */
+	@media (max-width: 640px) {
+		.skills-container {
+			grid-template-columns: 1fr;
+			gap: clamp(1rem, 3vw, 1.5rem);
+			max-width: 100%;
+			padding: 0;
+		}
+
+		/* Only reset centering when actually in single column */
+		.skills-container .skill-category:nth-child(3):nth-last-child(1) {
+			grid-column: auto !important;
+			max-width: none !important;
+			margin: 0 !important;
+		}
+
+		.hero-title {
+			font-size: 2.75rem;
+		}
+	}
+
+	/* Mobile Portrait */
 	@media (max-width: 480px) {
 		.hero-title {
 			font-size: 2.5rem;
@@ -455,6 +522,46 @@
 
 		.content-section {
 			padding: 1.5rem 0.5rem;
+		}
+
+		.skills-container {
+			gap: 1rem;
+			margin: 1.5rem auto;
+			padding: 0;
+		}
+
+		.skill-category .subtitle {
+			font-size: 1rem;
+		}
+	}
+
+	/* Small Mobile */
+	@media (max-width: 360px) {
+		.hero-title {
+			font-size: 2.25rem;
+		}
+
+		.content-section {
+			padding: 1rem 0.25rem;
+		}
+
+		.cards-container {
+			gap: 1rem;
+		}
+
+		.skills-container {
+			gap: 0.75rem;
+			margin: 1rem auto;
+		}
+
+		.skill-category .subtitle {
+			font-size: 0.95rem;
+			margin-bottom: 0.75rem;
+		}
+
+		.skill-category li {
+			font-size: 0.9rem;
+			margin-bottom: 0.375rem;
 		}
 	}
 </style>

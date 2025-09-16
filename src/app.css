@@ -17,7 +17,7 @@
 	--background-light: #fafafa;
 	--card-shadow: 0 4px 32px 20px rgba(0, 0, 0, 0.05);
 	--card-shadow-hover: 0 4px 16px 4px rgba(0, 0, 0, 0.4);
-	--max-content-width: 800px;
+	--max-content-width: 900px;
 	--border-radius: 12px;
 	--footer-background: #f5f5f5;
 	--footer-border: #e0e0e0;
@@ -162,9 +162,16 @@ a:hover {
 }
 
 /* Responsive design */
+@media (max-width: 1024px) {
+	h2 {
+		font-size: 1.7rem;
+	}
+}
+
 @media (max-width: 768px) {
 	h2 {
 		font-size: 1.5rem;
+		margin: 3px 0 16px 0;
 	}
 
 	.subtitle {
@@ -175,5 +182,33 @@ a:hover {
 		float: none;
 		display: block;
 		margin-top: 0.5rem;
+	}
+
+	/* Improve touch targets on mobile */
+	.cards-container {
+		padding: 0 0.5rem;
+	}
+}
+
+@media (max-width: 480px) {
+	h2 {
+		font-size: 1.4rem;
+		margin: 2px 0 14px 0;
+	}
+
+	.subtitle {
+		font-size: 0.95rem;
+	}
+
+	/* Smaller margins for mobile */
+	.dot-list {
+		margin: 0 4% 6px 4%;
+	}
+}
+
+/* Improve container queries support */
+@container (max-width: 768px) {
+	.skills-container {
+		grid-template-columns: 1fr;
 	}
 }
