@@ -252,9 +252,12 @@
 	/* Quick Links */
 	.quick-links {
 		padding: 3rem 1rem;
-		background: var(--background-color);
+		background: transparent;
 		display: flex;
 		justify-content: center;
+		position: relative;
+		margin-top: -120px;
+		z-index: 10;
 	}
 
 	.cards-container {
@@ -281,6 +284,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		position: relative;
 	}
 
 	.card:hover,
@@ -306,6 +310,7 @@
 	/* Main Content */
 	.main-content {
 		flex: 1;
+		padding-top: 2rem;
 	}
 
 	.content-section {
