@@ -49,7 +49,7 @@ export const skills = {
 		'C',
 		'Bash'
 	],
-	frameworksAndLibraries: ['Protobuf', 'Spring', 'JAX-RS', 'Node', 'Angular', 'Elasticsearch'],
+	frameworksAndLibraries: ['Go-Chi', 'Protobuf', 'Spring', 'JAX-RS', 'Node', 'Angular'],
 	technologiesAndServices: [
 		'Linux',
 		'Git',
