@@ -2,42 +2,27 @@
  * Plausible Analytics - Privacy-friendly analytics
  * https://www.npmjs.com/package/@plausible-analytics/tracker
  *
- * This module is client-side only - it dynamically imports
- * the tracker to avoid SSR issues.
+ * This module is client-side only - uses the official @plausible-analytics/tracker package.
  */
 import { browser } from '$app/environment';
 
-type PlausibleInstance = {
-	enableAutoPageviews: () => () => void;
-	trackEvent: (eventName: string, options?: { props?: Record<string, unknown> }) => void;
-	trackPageview: () => void;
-};
-
-let plausibleInstance: PlausibleInstance | null = null;
+let initialized = false;
 
 /**
- * Initialize Plausible tracker (client-side only)
+ * Initialize Plausible analytics (client-side only)
+ * Must be called once on app load
  */
-async function getPlausible(): Promise<PlausibleInstance | null> {
-	if (!browser) return null;
-	if (plausibleInstance) return plausibleInstance;
+export async function initPlausible(): Promise<void> {
+	if (!browser || initialized) return;
 
-	const module = await import('@plausible-analytics/tracker');
-	const Plausible = 'default' in module ? module.default : module;
+	const { init } = await import('@plausible-analytics/tracker');
 
-	plausibleInstance = (Plausible as (options: { domain: string }) => PlausibleInstance)({
-		domain: 'keanukerr.com'
+	init({
+		domain: 'keanukerr.com',
+		autoCapturePageviews: true
 	});
 
-	return plausibleInstance;
-}
-
-/**
- * Enable automatic pageview tracking for SPA navigation
- */
-export async function enableAutoPageviews(): Promise<(() => void) | undefined> {
-	const plausible = await getPlausible();
-	return plausible?.enableAutoPageviews();
+	initialized = true;
 }
 
 /**
@@ -47,6 +32,8 @@ export async function trackEvent(
 	eventName: string,
 	props?: Record<string, unknown>
 ): Promise<void> {
-	const plausible = await getPlausible();
-	plausible?.trackEvent(eventName, { props });
+	if (!browser) return;
+
+	const { trackEvent: track } = await import('@plausible-analytics/tracker');
+	track(eventName, { props });
 }

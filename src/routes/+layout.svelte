@@ -1,24 +1,14 @@
 <script>
 	import '../app.css';
 	import { theme } from '$lib/stores/theme';
-	import { enableAutoPageviews } from '$lib/utils/plausible';
-	import { onMount, onDestroy } from 'svelte';
-
-	/** @type {(() => void) | undefined} */
-	let cleanupPageviews;
+	import { initPlausible } from '$lib/utils/plausible';
+	import { onMount } from 'svelte';
 
 	onMount(() => {
 		theme.init();
 
-		// Initialize Plausible analytics with automatic pageview tracking
-		// This tracks initial pageview and subsequent SPA navigations
-		enableAutoPageviews().then((cleanup) => {
-			cleanupPageviews = cleanup;
-		});
-	});
-
-	onDestroy(() => {
-		if (cleanupPageviews) cleanupPageviews();
+		// Initialize Plausible analytics - handles pageview tracking automatically
+		initPlausible();
 	});
 </script>
 
