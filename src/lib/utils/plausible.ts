@@ -24,7 +24,11 @@ async function getPlausible(): Promise<PlausibleInstance | null> {
 
 	const module = await import('@plausible-analytics/tracker');
 	const Plausible = 'default' in module ? module.default : module;
-	plausibleInstance = (Plausible as () => PlausibleInstance)();
+
+	plausibleInstance = (Plausible as (options: { domain: string }) => PlausibleInstance)({
+		domain: 'keanukerr.com'
+	});
+
 	return plausibleInstance;
 }
 
