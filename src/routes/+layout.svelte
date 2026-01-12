@@ -6,8 +6,6 @@
 
 	onMount(() => {
 		theme.init();
-
-		// Initialize Plausible analytics - handles pageview tracking automatically
 		initPlausible();
 	});
 </script>
