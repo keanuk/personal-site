@@ -36,10 +36,12 @@
 /* ===== LOADING STATES ===== */
 .loading-shimmer {
 	@apply animate-pulse;
-	background: linear-gradient(90deg,
-			var(--md-surface-container) 0%,
-			var(--md-surface) 50%,
-			var(--md-surface-container) 100%);
+	background: linear-gradient(
+		90deg,
+		var(--md-surface-container) 0%,
+		var(--md-surface) 50%,
+		var(--md-surface-container) 100%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 2s infinite;
 }
@@ -293,11 +295,11 @@
 }
 
 /* ===== CUSTOM SPACING UTILITIES ===== */
-.space-y-content>*+* {
+.space-y-content > * + * {
 	@apply mt-6;
 }
 
-.space-y-tight>*+* {
+.space-y-tight > * + * {
 	@apply mt-3;
 }
 

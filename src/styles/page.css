@@ -183,7 +183,7 @@
 	margin: 0 auto;
 }
 
-.content-section:not(.section-tinted)>*:not(.section-content) {
+.content-section:not(.section-tinted) > *:not(.section-content) {
 	max-width: var(--max-content-width);
 	margin-left: auto;
 	margin-right: auto;
@@ -391,10 +391,12 @@
 	top: 0;
 	bottom: 0;
 	width: 2px;
-	background: linear-gradient(180deg,
-			var(--md-primary) 0%,
-			var(--md-secondary) 50%,
-			var(--md-tertiary) 100%);
+	background: linear-gradient(
+		180deg,
+		var(--md-primary) 0%,
+		var(--md-secondary) 50%,
+		var(--md-tertiary) 100%
+	);
 	border-radius: 2px;
 }
 

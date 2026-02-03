@@ -5,46 +5,37 @@
 	 * @prop {string} fillColor - CSS color or variable for the scallop fill
 	 * @prop {string} className - Additional CSS classes
 	 */
-	
+
 	/** @type {'top' | 'bottom'} */
 	export let position = 'bottom';
-	
+
 	/** @type {string} */
 	export let fillColor = 'var(--md-surface-container)';
-	
+
 	/** @type {string} */
 	export let className = '';
-	
+
 	/** @type {number} */
 	export let scallops = 12;
+
+	$: scallopWidth = 1200 / scallops;
+	$: bottomPath = `M0,0 ${Array.from({ length: scallops })
+		.map((_, i) => `Q${i * scallopWidth + scallopWidth / 2},40 ${(i + 1) * scallopWidth},0`)
+		.join(' ')} L1200,40 L0,40 Z`;
+
+	$: topPath = `M0,40 ${Array.from({ length: scallops })
+		.map((_, i) => `Q${i * scallopWidth + scallopWidth / 2},0 ${(i + 1) * scallopWidth},40`)
+		.join(' ')} L1200,0 L0,0 Z`;
 </script>
 
 <div class="scalloped-divider scalloped-{position} {className}" aria-hidden="true">
-	<svg
-		viewBox="0 0 1200 40"
-		preserveAspectRatio="none"
-		class="scallop-svg"
-	>
+	<svg viewBox="0 0 1200 40" preserveAspectRatio="none" class="scallop-svg">
 		{#if position === 'bottom'}
 			<!-- Scallop facing down (for bottom of sections) -->
-			<path
-				d="M0,0 
-				   {#each Array(scallops) as _, i}
-				   Q{(i * (1200 / scallops)) + (600 / scallops)},40 {(i + 1) * (1200 / scallops)},0
-				   {/each}
-				   L1200,40 L0,40 Z"
-				fill={fillColor}
-			/>
+			<path d={bottomPath} fill={fillColor} />
 		{:else}
 			<!-- Scallop facing up (for top of sections) -->
-			<path
-				d="M0,40 
-				   {#each Array(scallops) as _, i}
-				   Q{(i * (1200 / scallops)) + (600 / scallops)},0 {(i + 1) * (1200 / scallops)},40
-				   {/each}
-				   L1200,0 L0,0 Z"
-				fill={fillColor}
-			/>
+			<path d={topPath} fill={fillColor} />
 		{/if}
 	</svg>
 </div>

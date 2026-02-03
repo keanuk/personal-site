@@ -4,15 +4,6 @@
 	import SquigglyLine from './SquigglyLine.svelte';
 
 	const currentYear = new Date().getFullYear();
-
-	// Social link colors for colorful hover states
-	const socialColors = {
-		github: 'var(--md-on-surface)',
-		gitlab: 'var(--md-secondary)',
-		linkedin: 'var(--md-tertiary)',
-		email: 'var(--md-primary)',
-		resume: 'var(--md-secondary-dark)'
-	};
 </script>
 
 <footer class="footer">
