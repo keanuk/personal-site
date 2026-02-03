@@ -133,4 +133,4 @@ export const communityInvolvement = [
 export const aboutMe = `My name is Keanu Kerr and I am currently a software engineer at Bread Financial.
 I am an alumni of the University of Edinburgh where I graduated with a master of
 science in informatics. I previously graduated from the University of Florida where
-I obtained a bachelor of science in computer science along with a minor in studio art.`;
+I obtained a bachelor of science in computer science with a minor in studio art.`;

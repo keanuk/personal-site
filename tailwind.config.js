@@ -4,77 +4,70 @@ export default {
 	theme: {
 		extend: {
 			colors: {
+				// M3 Expressive Primary - Violet
 				primary: {
-					DEFAULT: 'var(--primary-color)',
-					light: '#9f4fff',
-					dark: '#7700ff'
+					DEFAULT: 'var(--md-primary)',
+					light: 'var(--md-primary-light)',
+					dark: 'var(--md-primary-dark)',
+					container: 'var(--md-primary-container)',
+					'on-container': 'var(--md-on-primary-container)'
 				},
-				blue: {
-					500: '#3b82f6',
-					600: '#2563eb',
-					700: '#1d4ed8',
-					800: '#1e40af'
+				// M3 Expressive Secondary - Coral
+				secondary: {
+					DEFAULT: 'var(--md-secondary)',
+					light: 'var(--md-secondary-light)',
+					dark: 'var(--md-secondary-dark)',
+					container: 'var(--md-secondary-container)',
+					'on-container': 'var(--md-on-secondary-container)'
 				},
-				purple: {
-					600: '#7c3aed',
-					700: '#6d28d9',
-					800: '#5b21b6',
-					900: '#4c1d95'
+				// M3 Expressive Tertiary - Teal
+				tertiary: {
+					DEFAULT: 'var(--md-tertiary)',
+					light: 'var(--md-tertiary-light)',
+					dark: 'var(--md-tertiary-dark)',
+					container: 'var(--md-tertiary-container)',
+					'on-container': 'var(--md-on-tertiary-container)'
 				},
-				accent: 'var(--accent-color)',
-				text: {
-					DEFAULT: 'var(--text-color)',
-					light: 'var(--text-light)'
+				// Surface colors
+				surface: {
+					DEFAULT: 'var(--md-surface)',
+					dim: 'var(--md-surface-dim)',
+					bright: 'var(--md-surface-bright)',
+					'container-lowest': 'var(--md-surface-container-lowest)',
+					'container-low': 'var(--md-surface-container-low)',
+					container: 'var(--md-surface-container)',
+					'container-high': 'var(--md-surface-container-high)',
+					'container-highest': 'var(--md-surface-container-highest)'
 				},
+				// On-surface colors
+				'on-surface': {
+					DEFAULT: 'var(--md-on-surface)',
+					variant: 'var(--md-on-surface-variant)'
+				},
+				// Outline colors
+				outline: {
+					DEFAULT: 'var(--md-outline)',
+					variant: 'var(--md-outline-variant)'
+				},
+				// Background
 				background: {
-					DEFAULT: 'var(--background-color)',
-					light: 'var(--background-light)'
+					DEFAULT: 'var(--md-background)',
+					light: 'var(--md-surface-container)'
+				},
+				// Legacy compatibility
+				accent: 'var(--md-tertiary)',
+				text: {
+					DEFAULT: 'var(--md-on-surface)',
+					light: 'var(--md-on-surface-variant)'
 				},
 				footer: {
-					bg: 'var(--footer-background)',
-					border: 'var(--footer-border)'
-				},
-				white: '#ffffff',
-				gray: {
-					300: '#d1d5db',
-					500: '#6b7280'
-				},
-				green: {
-					50: '#f0fdf4',
-					200: '#bbf7d0',
-					400: '#4ade80',
-					600: '#16a34a',
-					800: '#166534',
-					900: '#14532d'
-				},
-				yellow: {
-					50: '#fefce8',
-					200: '#fef08a',
-					400: '#facc15',
-					600: '#ca8a04',
-					800: '#854d0e',
-					900: '#713f12'
-				},
-				red: {
-					50: '#fef2f2',
-					200: '#fecaca',
-					400: '#f87171',
-					600: '#dc2626',
-					800: '#991b1b',
-					900: '#7f1d1d'
+					bg: 'var(--md-surface-container)',
+					border: 'var(--md-outline-variant)'
 				}
 			},
 			fontFamily: {
-				sans: [
-					'Roboto',
-					'-apple-system',
-					'BlinkMacSystemFont',
-					'Segoe UI',
-					'Oxygen',
-					'Ubuntu',
-					'Cantarell',
-					'sans-serif'
-				]
+				sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+				display: ['Outfit', 'Inter', 'sans-serif']
 			},
 			spacing: {
 				15: '60px',
@@ -84,65 +77,85 @@ export default {
 				content: 'var(--max-content-width)'
 			},
 			borderRadius: {
-				custom: 'var(--border-radius)'
+				custom: 'var(--border-radius)',
+				sm: 'var(--border-radius-sm)',
+				lg: 'var(--border-radius-lg)',
+				scallop: '24px'
 			},
 			boxShadow: {
-				card: 'var(--card-shadow)',
-				'card-hover': 'var(--card-shadow-hover)'
+				'md-sm': 'var(--md-shadow-sm)',
+				md: 'var(--md-shadow)',
+				'md-md': 'var(--md-shadow-md)',
+				'md-lg': 'var(--md-shadow-lg)',
+				'md-xl': 'var(--md-shadow-xl)',
+				card: 'var(--md-shadow)',
+				'card-hover': 'var(--md-shadow-lg)'
 			},
 			animation: {
 				spectrum: 'spectrum 15s ease-in-out infinite',
-				shimmer: 'shimmer 2s infinite'
+				shimmer: 'shimmer 2s infinite',
+				wiggle: 'wiggle 3s ease-in-out infinite',
+				'wiggle-slow': 'wiggle 5s ease-in-out infinite',
+				'bounce-soft': 'bounce-soft 0.5s ease-out',
+				'fade-in': 'fade-in 0.3s ease-out',
+				'slide-up': 'slide-up 0.4s ease-out',
+				'scale-in': 'scale-in 0.3s ease-out',
+				float: 'float 6s ease-in-out infinite'
 			},
 			keyframes: {
 				spectrum: {
-					'0%': {
-						backgroundPosition: '0% 0%, 0% 50%'
-					},
-					'16.67%': {
-						backgroundPosition: '0% 0%, 20% 30%'
-					},
-					'33.33%': {
-						backgroundPosition: '0% 0%, 40% 70%'
-					},
-					'50%': {
-						backgroundPosition: '0% 0%, 60% 20%'
-					},
-					'66.67%': {
-						backgroundPosition: '0% 0%, 80% 80%'
-					},
-					'83.33%': {
-						backgroundPosition: '0% 0%, 100% 40%'
-					},
-					'100%': {
-						backgroundPosition: '0% 0%, 0% 50%'
-					}
+					'0%': { backgroundPosition: '0% 0%, 0% 50%' },
+					'50%': { backgroundPosition: '100% 100%, 100% 50%' },
+					'100%': { backgroundPosition: '0% 0%, 0% 50%' }
 				},
 				shimmer: {
-					'0%': {
-						backgroundPosition: '200% 0'
-					},
-					'100%': {
-						backgroundPosition: '-200% 0'
-					}
+					'0%': { backgroundPosition: '200% 0' },
+					'100%': { backgroundPosition: '-200% 0' }
+				},
+				wiggle: {
+					'0%, 100%': { transform: 'translateX(0)' },
+					'25%': { transform: 'translateX(-5px)' },
+					'75%': { transform: 'translateX(5px)' }
+				},
+				'bounce-soft': {
+					'0%': { transform: 'scale(0.95)' },
+					'50%': { transform: 'scale(1.02)' },
+					'100%': { transform: 'scale(1)' }
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				'slide-up': {
+					'0%': { opacity: '0', transform: 'translateY(20px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'scale-in': {
+					'0%': { opacity: '0', transform: 'scale(0.9)' },
+					'100%': { opacity: '1', transform: 'scale(1)' }
+				},
+				float: {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
 				}
 			},
 			backgroundImage: {
-				'hero-gradient':
-					'radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffd93d, #ff9ff3, #6c5ce7)',
-				'hero-dots-1':
-					'radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 1px, transparent 1px), radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.05) 1px, transparent 1px)',
+				'hero-gradient': 'var(--hero-gradient)',
 				'shimmer-gradient':
-					'linear-gradient(90deg, var(--background-light) 0%, var(--background-color) 50%, var(--background-light) 100%)'
+					'linear-gradient(90deg, var(--md-surface-container) 0%, var(--md-surface) 50%, var(--md-surface-container) 100%)'
 			},
 			backgroundSize: {
-				'hero-pattern': '20px 20px, 600% 600%',
-				'hero-dots': '15px 15px, 25px 25px',
 				shimmer: '200% 100%'
 			},
-			textShadow: {
-				hero: '0 1px 2px rgba(0, 0, 0, 0.3)',
-				'hero-dark': '0 1px 2px rgba(0, 0, 0, 0.8)'
+			transitionTimingFunction: {
+				standard: 'var(--easing-standard)',
+				emphasized: 'var(--easing-emphasized)',
+				bounce: 'var(--easing-bounce)'
+			},
+			transitionDuration: {
+				fast: 'var(--duration-fast)',
+				normal: 'var(--duration-normal)',
+				slow: 'var(--duration-slow)'
 			}
 		}
 	},
@@ -151,10 +164,16 @@ export default {
 		function ({ addUtilities }) {
 			const newUtilities = {
 				'.text-shadow-hero': {
-					textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)'
+					textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
 				},
 				'.text-shadow-hero-dark': {
-					textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)'
+					textShadow: '0 2px 4px rgba(0, 0, 0, 0.6)'
+				},
+				'.text-gradient': {
+					background: 'var(--primary-gradient)',
+					backgroundClip: 'text',
+					'-webkit-background-clip': 'text',
+					'-webkit-text-fill-color': 'transparent'
 				}
 			};
 			addUtilities(newUtilities);

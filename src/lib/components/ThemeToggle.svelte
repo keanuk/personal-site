@@ -2,218 +2,261 @@
 	import { theme } from '$lib/stores/theme';
 	import { onMount } from 'svelte';
 
-	let isOpen = false;
 	let currentTheme = 'system';
+	let effectiveTheme = 'light';
 
 	// Subscribe to theme changes
 	theme.subscribe((value) => {
 		currentTheme = value;
+		updateEffectiveTheme();
 	});
+
+	function updateEffectiveTheme() {
+		if (typeof window === 'undefined') return;
+
+		if (currentTheme === 'system') {
+			effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+		} else {
+			effectiveTheme = currentTheme;
+		}
+	}
 
 	onMount(() => {
 		theme.init();
+		updateEffectiveTheme();
+
+		// Listen for system theme changes
+		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+		mediaQuery.addEventListener('change', updateEffectiveTheme);
+
+		return () => {
+			mediaQuery.removeEventListener('change', updateEffectiveTheme);
+		};
 	});
 
-	function toggleDropdown() {
-		isOpen = !isOpen;
-	}
-
-	function selectTheme(/** @type {string} */ selectedTheme) {
-		theme.set(selectedTheme);
-		isOpen = false;
-	}
-
-	function handleClickOutside(/** @type {MouseEvent} */ event) {
-		const target = /** @type {Element} */ (event.target);
-		const dropdown = document.querySelector('.theme-toggle');
-		if (dropdown && !dropdown.contains(target)) {
-			isOpen = false;
+	function toggleTheme() {
+		// Cycle through: light -> dark -> system -> light
+		if (currentTheme === 'light') {
+			theme.set('dark');
+		} else if (currentTheme === 'dark') {
+			theme.set('system');
+		} else {
+			theme.set('light');
 		}
 	}
 
-	function getThemeIcon(/** @type {string} */ themeValue) {
-		switch (themeValue) {
-			case 'light':
-				return '☀️';
-			case 'dark':
-				return '🌙';
-			case 'system':
-				return '⚙️';
-			default:
-				return '⚙️';
-		}
-	}
-
-	function getThemeLabel(/** @type {string} */ themeValue) {
-		switch (themeValue) {
+	function getLabel() {
+		switch (currentTheme) {
 			case 'light':
 				return 'Light';
 			case 'dark':
 				return 'Dark';
 			case 'system':
-				return 'System';
+				return 'Auto';
 			default:
-				return 'System';
+				return 'Auto';
 		}
 	}
 </script>
 
-<svelte:window on:click={handleClickOutside} />
-
-<div class="theme-toggle">
-	<button
-		class="theme-button"
-		on:click={toggleDropdown}
-		aria-label="Toggle theme"
-		aria-expanded={isOpen}
-		aria-haspopup="true"
-	>
-		<span class="theme-icon">{getThemeIcon(currentTheme)}</span>
-		<span class="theme-label">{getThemeLabel(currentTheme)}</span>
-		<span class="dropdown-arrow" class:rotated={isOpen}>▼</span>
-	</button>
-
-	{#if isOpen}
-		<div class="theme-dropdown">
-			<button
-				class="theme-option"
-				class:active={currentTheme === 'light'}
-				on:click={() => selectTheme('light')}
-			>
-				<span class="option-icon">☀️</span>
-				<span>Light</span>
-			</button>
-			<button
-				class="theme-option"
-				class:active={currentTheme === 'dark'}
-				on:click={() => selectTheme('dark')}
-			>
-				<span class="option-icon">🌙</span>
-				<span>Dark</span>
-			</button>
-			<button
-				class="theme-option"
-				class:active={currentTheme === 'system'}
-				on:click={() => selectTheme('system')}
-			>
-				<span class="option-icon">⚙️</span>
-				<span>System</span>
-			</button>
+<button
+	class="theme-toggle"
+	on:click={toggleTheme}
+	aria-label="Toggle theme, currently {getLabel()}"
+	title="Theme: {getLabel()}"
+>
+	<div class="toggle-track" class:dark={effectiveTheme === 'dark'}>
+		<div class="toggle-icons">
+			<span class="icon sun" class:active={effectiveTheme === 'light'}>
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<circle cx="12" cy="12" r="5" />
+					<line x1="12" y1="1" x2="12" y2="3" />
+					<line x1="12" y1="21" x2="12" y2="23" />
+					<line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+					<line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+					<line x1="1" y1="12" x2="3" y2="12" />
+					<line x1="21" y1="12" x2="23" y2="12" />
+					<line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+					<line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+				</svg>
+			</span>
+			<span class="icon moon" class:active={effectiveTheme === 'dark'}>
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+				</svg>
+			</span>
 		</div>
-	{/if}
-</div>
+		<div class="toggle-thumb" class:dark={effectiveTheme === 'dark'}>
+			{#if currentTheme === 'system'}
+				<span class="system-indicator">A</span>
+			{/if}
+		</div>
+	</div>
+</button>
 
 <style>
 	.theme-toggle {
-		position: relative;
-		display: inline-block;
-	}
-
-	.theme-button {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		padding: 0.5rem 0.75rem;
-		background: var(--background-color);
-		border: 1px solid var(--footer-border);
-		border-radius: 6px;
-		color: var(--text-color);
-		font-size: 0.875rem;
+		padding: 0;
+		background: transparent;
+		border: none;
 		cursor: pointer;
-		transition: all 0.2s ease;
-		min-width: 100px;
+		outline: none;
+		-webkit-tap-highlight-color: transparent;
 	}
 
-	.theme-button:hover {
-		background: var(--background-light);
-		border-color: var(--primary-color);
+	.theme-toggle:focus-visible {
+		outline: 2px solid var(--md-primary);
+		outline-offset: 4px;
+		border-radius: 999px;
 	}
 
-	.theme-button:focus {
-		outline: 2px solid var(--primary-color);
-		outline-offset: 2px;
-	}
-
-	.theme-icon {
-		font-size: 1rem;
-	}
-
-	.theme-label {
-		flex: 1;
-		text-align: left;
-	}
-
-	.dropdown-arrow {
-		font-size: 0.75rem;
-		transition: transform 0.2s ease;
-	}
-
-	.dropdown-arrow.rotated {
-		transform: rotate(180deg);
-	}
-
-	.theme-dropdown {
-		position: absolute;
-		top: 100%;
-		left: 0;
-		right: 0;
-		margin-top: 0.25rem;
-		background: var(--background-color);
-		border: 1px solid var(--footer-border);
-		border-radius: 6px;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-		z-index: 1000;
+	.toggle-track {
+		position: relative;
+		width: 56px;
+		height: 32px;
+		border-radius: 999px;
+		background: linear-gradient(
+			135deg,
+			var(--md-secondary-container) 0%,
+			var(--md-tertiary-container) 100%
+		);
+		transition: background 0.4s var(--easing-standard);
 		overflow: hidden;
 	}
 
-	:global([data-theme='dark']) .theme-dropdown {
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+	.toggle-track.dark {
+		background: linear-gradient(
+			135deg,
+			var(--md-primary-container) 0%,
+			var(--md-secondary-container) 100%
+		);
 	}
 
-	.theme-option {
+	.toggle-icons {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		justify-content: space-between;
+		padding: 0 6px;
+		pointer-events: none;
+	}
+
+	.icon {
+		width: 16px;
+		height: 16px;
+		opacity: 0.4;
+		transition:
+			opacity 0.3s var(--easing-standard),
+			transform 0.3s var(--easing-bounce);
+		color: var(--md-on-surface);
+	}
+
+	.icon.active {
+		opacity: 1;
+		transform: scale(1.1);
+	}
+
+	.icon svg {
 		width: 100%;
-		padding: 0.75rem;
-		background: transparent;
-		border: none;
-		color: var(--text-color);
-		font-size: 0.875rem;
-		cursor: pointer;
-		transition: background-color 0.2s ease;
-		text-align: left;
+		height: 100%;
 	}
 
-	.theme-option:hover {
-		background: var(--social-link-hover);
+	.toggle-thumb {
+		position: absolute;
+		top: 4px;
+		left: 4px;
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		background: var(--md-surface);
+		box-shadow: var(--md-shadow-sm);
+		transition:
+			transform 0.4s var(--easing-bounce),
+			background 0.3s var(--easing-standard);
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
-	.theme-option.active {
-		background: var(--primary-color);
-		color: white;
+	.toggle-thumb.dark {
+		transform: translateX(24px);
 	}
 
-	.theme-option.active:hover {
-		background: var(--primary-color);
+	.system-indicator {
+		font-family: 'Outfit', sans-serif;
+		font-size: 11px;
+		font-weight: 700;
+		color: var(--md-primary);
+		line-height: 1;
 	}
 
-	.option-icon {
-		font-size: 1rem;
-		width: 1.25rem;
-		text-align: center;
+	/* Hover effect */
+	.theme-toggle:hover .toggle-thumb {
+		box-shadow: var(--md-shadow);
+		transform: scale(1.05);
+	}
+
+	.theme-toggle:hover .toggle-thumb.dark {
+		transform: translateX(24px) scale(1.05);
+	}
+
+	/* Active press effect */
+	.theme-toggle:active .toggle-thumb {
+		transform: scale(0.95);
+	}
+
+	.theme-toggle:active .toggle-thumb.dark {
+		transform: translateX(24px) scale(0.95);
 	}
 
 	@media (max-width: 768px) {
-		.theme-button {
-			min-width: 90px;
-			font-size: 0.8rem;
-			padding: 0.4rem 0.6rem;
+		.toggle-track {
+			width: 48px;
+			height: 28px;
 		}
 
-		.theme-option {
-			padding: 0.6rem;
-			font-size: 0.8rem;
+		.toggle-thumb {
+			width: 20px;
+			height: 20px;
+			top: 4px;
+			left: 4px;
+		}
+
+		.toggle-thumb.dark {
+			transform: translateX(20px);
+		}
+
+		.theme-toggle:hover .toggle-thumb.dark {
+			transform: translateX(20px) scale(1.05);
+		}
+
+		.icon {
+			width: 14px;
+			height: 14px;
+		}
+
+		.system-indicator {
+			font-size: 10px;
 		}
 	}
 </style>
