@@ -19,7 +19,7 @@ Built with **SvelteKit** for optimal performance and modern web standards.
 - **Framework**: SvelteKit
 - **Language**: TypeScript
 - **Runtime**: Deno (with npm compatibility) + Node.js
-- **Styling**: CSS with custom properties
+- **Styling**: Modern CSS with custom properties
 - **Build Tool**: Vite
 - **Task Runner**: Deno tasks + just
 - **Deployment**: GitHub Pages
@@ -38,7 +38,7 @@ Choose one of the following setups:
 
 **Alternative: Traditional Node.js**
 
-- Node.js 18+
+- Node.js 22.17+
 - npm
 
 ### Setup

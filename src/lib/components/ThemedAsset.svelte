@@ -1,6 +1,6 @@
 <script>
-	import { shouldInvertAsset } from '$lib/utils/theme';
-	import { browser } from '$app/environment';
+	import { shouldInvertAsset } from '#lib/utils/theme.js';
+	import { browser } from '$app/env';
 	import { onMount } from 'svelte';
 
 	/** @type {string} */

@@ -18,119 +18,98 @@ export const socialLinks = {
 	linkedin: 'https://www.linkedin.com/in/keanukerr/',
 	gitlab: 'https://gitlab.com/keanuk',
 	email: `mailto:${personalInfo.email}`,
-	resume: '/documents/Keanu_Kerr_Resume.pdf',
+	resume: 'documents/Keanu_Kerr_Resume.pdf',
 	sourceCode: 'https://github.com/keanuk/personal-site',
 	reportIssue: 'https://github.com/keanuk/personal-site/issues/new'
-};
+} as const;
 
 export const education = [
 	{
 		institution: 'University of Edinburgh',
-		degree: 'MSc in Informatics',
-		type: 'Master of Science'
+		degree: 'MSc in Informatics (Computer Science)',
+		period: 'Nov 2019'
 	},
 	{
 		institution: 'University of Florida',
 		degree: 'BSc in Computer Science',
-		type: 'Bachelor of Science',
-		additional: 'Minor in Studio Art'
+		period: 'May 2018'
 	}
 ];
 
 export const skills = {
-	programmingLanguages: [
-		'Go',
-		'Java',
-		'Rust',
-		'Python',
-		'TypeScript',
-		'JavaScript',
-		'C++',
-		'C',
-		'Bash'
-	],
-	frameworksAndLibraries: ['Go-Chi', 'Protobuf', 'Spring', 'JAX-RS', 'Node', 'Angular'],
-	technologiesAndServices: [
-		'Linux',
-		'Git',
-		'REST',
+	languages: ['Go', 'Java', 'Rust', 'Python', 'C', 'C++', 'TypeScript', 'Bash'],
+	distributedSystemsAndApis: [
+		'Microservices',
 		'gRPC',
-		'PostgreSQL',
-		'Nix',
+		'Protobuf',
+		'RESTful APIs',
+		'Event-Driven Architecture'
+	],
+	cloudAndInfrastructure: [
+		'Kubernetes (K8s)',
 		'Docker',
-		'Kubernetes',
 		'AWS',
-		'Azure'
+		'Azure (AKS)',
+		'Linux',
+		'CI/CD',
+		'Git'
+	],
+	dataAndStorage: [
+		'PostgreSQL',
+		'Oracle DB',
+		'Snowflake',
+		'Elasticsearch',
+		'Distributed Caching & Search Indexing'
 	]
 };
 
-export const workExperience = [
+export const professionalExperience = [
 	{
 		title: 'Software Engineer',
 		company: 'Bread Financial',
-		period: 'March 2023 - Present',
+		period: 'Mar 2023 – Present',
+		location: 'Philadelphia, PA',
 		responsibilities: [
-			'Developed REST and gRPC APIs in Go, integrating with PostgreSQL databases for financial services',
-			'Implemented features for loan processing, payment systems, and credit bureau reporting workflows',
-			'Containerized and deployed microservices using Docker on Kubernetes infrastructure'
+			'Architect, build, and scale low-latency REST and gRPC microservices in Go powering core loan servicing and high-volume digital payment workflows.',
+			'Spearheaded the modernization of credit bureau reporting pipelines and financial settlement workflows backed by Snowflake, enforcing strict ACID transactional integrity and auditability.',
+			'Standardized inter-service communication across engineering teams by designing unified Protocol Buffer schemas and decoupled, contract-first API architectures.',
+			'Orchestrate containerized workloads using Docker and Kubernetes, improving deployment reliability, fault isolation, and horizontal scalability across production environments.'
 		]
 	},
 	{
 		title: 'Software Engineer',
 		company: 'General Motors',
-		period: 'February 2020 - March 2023',
+		period: 'Feb 2020 – Mar 2023',
+		location: 'Austin, TX',
 		responsibilities: [
-			'Developed REST APIs using Spring Framework and JAX-RS with Oracle database integration',
-			'Improved search API performance with Elasticsearch cluster implementation and optimization',
-			'Implemented TDD methodology and CI/CD pipelines using Docker on Azure Kubernetes Service'
-		]
-	},
-	{
-		title: 'Software Engineer Intern',
-		company: 'Elgato',
-		period: 'May 2016 - August 2016',
-		responsibilities: [
-			'Developed JavaScript test overlays for Game Capture software to improve QA testing efficiency',
-			'Built internal metrics dashboard using Angular for real-time application monitoring',
-			'Collaborated across development teams using Git workflows for internal web application development'
+			'Engineered high-availability enterprise backend services in Java (Spring Framework, JAX-RS) integrated with high-volume Oracle relational databases.',
+			'Architected and tuned a distributed Elasticsearch cluster, redesigning indexing strategies and query execution paths to substantially reduce search API latency.',
+			'Established automated CI/CD pipelines and Test-Driven Development (TDD) workflows deploying to Azure Kubernetes Service (AKS), markedly reducing release-cycle defects and deployment friction.'
 		]
 	}
 ];
 
-export const projects = [
-	{
-		title: "Master's Dissertation Project",
-		period: 'April 2019 - August 2019',
-		description: [
-			'Developed multiplayer RPG in Java using JavaFX GUI and peer-to-peer networking architecture',
-			'Implemented OO design patterns to create an educational framework for computer science students',
-			'Authored comprehensive documentation including setup guides and extensibility framework'
-		]
-	},
-	{
-		title: 'Senior Project',
-		period: 'January 2018 - May 2018',
-		description: [
-			'Developed Angular web application for custom game character creation with dynamic form validation',
-			'Built Go backend service with REST API for user profile management and character data persistence',
-			'Deployed full-stack application on self-managed Linux server infrastructure'
-		]
-	}
-];
-
-export const communityInvolvement = [
+export const openSourceContributions = [
 	{
 		role: 'Contributor',
-		organization: 'Nixpkgs',
-		period: '2024 - Present',
+		organization: 'Noctalia (Wayland Desktop Shell)',
+		period: 'Aug 2026 – Sep 2026',
+		url: 'https://github.com/noctalia-dev/noctalia',
 		activities: [
-			'Contributed unit tests and bug fixes to improve package reliability',
-			'Add nixos-hardware configurations to improve device compatibility'
+			'Engineered an asynchronous ModemManager D-Bus integration to expose real-time cellular state (5G/LTE) and signal-strength telemetry directly within the Wayland shell UI.',
+			'Implemented NetworkManager mobile-data state controls and authored comprehensive unit tests covering dynamic glyph rendering and connection state fallbacks.'
+		]
+	},
+	{
+		role: 'Contributor',
+		organization: 'NixOS (nixpkgs & nixos-hardware)',
+		period: 'Jan 2024 – Jun 2025',
+		url: 'https://github.com/NixOS',
+		activities: [
+			'Authored and upstreamed declarative hardware configuration profiles for the Lenovo ThinkPad P14s AMD Gen 5 and HP EliteBook 845 G8, optimizing kernel parameters and power management.',
+			'Expanded validation test coverage in nixpkgs-check-by-name to reliably detect and report concurrent schema validation failures in CI.'
 		]
 	}
 ];
 
-export const aboutMe = `My name is Keanu Kerr and I am currently a software engineer at Bread Financial.
-I am an alumni of the University of Edinburgh where I graduated with a master of
-science in informatics. I previously graduated from the University of Florida where
-I obtained a bachelor of science in computer science with a minor in studio art.`;
+export const aboutMe = `Backend Software Engineer with 6+ years of experience architecting low-latency distributed systems, high-throughput financial services, and cloud-native infrastructure in Go and Java. Proven track record in schema-first API design, transactional data integrity, and systems-level Linux open-source development.`;

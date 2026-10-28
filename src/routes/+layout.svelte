@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
-	import { theme } from '$lib/stores/theme';
-	import { initPlausible } from '$lib/utils/plausible';
+	import { theme } from '#lib/stores/theme.js';
+	import { initPlausible } from '#lib/utils/plausible.ts';
 	import { onMount } from 'svelte';
 
 	onMount(() => {

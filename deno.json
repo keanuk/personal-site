@@ -25,8 +25,7 @@
 	"imports": {
 		"@/": "./src/",
 		"@std/": "jsr:@std/",
-		"$lib/": "./src/lib/",
-		"$lib": "./src/lib/index.js"
+		"#lib/": "./src/lib/"
 	},
 	"compilerOptions": {
 		"allowJs": true,
