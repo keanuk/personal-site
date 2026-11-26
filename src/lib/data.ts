@@ -1,5 +1,19 @@
 // Personal information and data for the portfolio website
 
+export interface Role {
+	title: string;
+	period: string;
+}
+
+export interface ExperienceItem {
+	title: string;
+	company: string;
+	period: string;
+	location: string;
+	roles?: Role[];
+	responsibilities: string[];
+}
+
 export const personalInfo = {
 	firstName: 'Keanu',
 	lastName: 'Kerr',
@@ -63,12 +77,16 @@ export const skills = {
 	]
 };
 
-export const professionalExperience = [
+export const professionalExperience: ExperienceItem[] = [
 	{
-		title: 'Software Engineer',
+		title: 'Senior Software Engineer',
 		company: 'Bread Financial',
 		period: 'Mar 2023 – Present',
 		location: 'Philadelphia, PA',
+		roles: [
+			{ title: 'Senior Software Engineer', period: 'Nov 2026 – Present' },
+			{ title: 'Software Engineer', period: 'Mar 2023 – Nov 2026' }
+		],
 		responsibilities: [
 			'Architect, build, and scale low-latency REST and gRPC microservices in Go powering core loan servicing and high-volume digital payment workflows.',
 			'Spearheaded the modernization of credit bureau reporting pipelines and financial settlement workflows backed by Snowflake, enforcing strict ACID transactional integrity and auditability.',
@@ -112,4 +130,4 @@ export const openSourceContributions = [
 	}
 ];
 
-export const aboutMe = `Backend Software Engineer with 6+ years of experience architecting low-latency distributed systems, high-throughput financial services, and cloud-native infrastructure in Go and Java. Proven track record in schema-first API design, transactional data integrity, and systems-level Linux open-source development.`;
+export const aboutMe = `Senior Backend Software Engineer with 6+ years of experience architecting low-latency distributed systems, high-throughput financial services, and cloud-native infrastructure in Go and Java. Proven track record in schema-first API design, transactional data integrity, and systems-level Linux open-source development.`;

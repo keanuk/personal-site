@@ -34,7 +34,7 @@
 	<title>{personalInfo.fullName} - Software Engineer</title>
 	<meta
 		name="description"
-		content="Personal portfolio of {personalInfo.fullName}, Software Engineer at {personalInfo.company}"
+		content="Personal portfolio of {personalInfo.fullName}, Senior Software Engineer at {personalInfo.company}"
 	/>
 </svelte:head>
 
@@ -121,7 +121,23 @@
 							<div class="timeline-content">
 								<div class="timeline-header">
 									<div>
-										<h3 class="timeline-title">{job.title}</h3>
+										{#if job.roles && job.roles.length > 0}
+											{#each job.roles as role, i (`${role.title}-${role.period}`)}
+												{#if i === 0}
+													<h3 class="timeline-title">
+														{role.title}
+														<span class="timeline-role-period">({role.period})</span>
+													</h3>
+												{:else}
+													<p class="timeline-previous-role">
+														{role.title}
+														<span class="timeline-role-period">({role.period})</span>
+													</p>
+												{/if}
+											{/each}
+										{:else}
+											<h3 class="timeline-title">{job.title}</h3>
+										{/if}
 										<span class="timeline-company">{job.company} · {job.location}</span>
 									</div>
 									<span class="timeline-period">{job.period}</span>
